@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="template :: head">
+
+</head>
+<body>
+<h1>Página de Inicio</h1>
+
+<div th:replace="template :: container">
+</div>
+
+<a th:href="@{/login}" >Login</a>
+<a th:href="@{/categorias}" >Lista categorias</a>
+
+</body>
+</html>
