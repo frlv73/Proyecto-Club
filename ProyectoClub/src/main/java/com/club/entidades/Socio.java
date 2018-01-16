@@ -14,6 +14,14 @@ public class Socio {
 	private String estado;
 	private CategoriaSocio categoriaSocio;
 
+	
+	//Contructor para Login
+	public Socio(String email, String pass) {
+		super();
+		this.setEmail(email);
+		this.setPassword(pass);
+	}
+
 	public Socio() {
 		super();
 	}

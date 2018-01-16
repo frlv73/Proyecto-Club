@@ -4,13 +4,21 @@
 
 </head>
 <body>
-<h1>Página de Inicio</h1>
+	<div th:replace="template :: nav"></div>
 
-<div th:replace="template :: container">
-</div>
+	<div th:insert="template :: container">
+		<p
+			th:text="'USUARIO LOGUEADO EXITOSAMENTE ID: '+${usuarioLogueado.id} +' Nombre: ' +${usuarioLogueado.nombre}"
+			th:unless="${usuarioLogueado == null}"></p>
 
-<a th:href="@{/login}" >Login</a>
-<a th:href="@{/categorias}" >Lista de categorias</a>
+	</div>
+
+	<a th:href="@{/login}">Login</a>
+	<br />
+	<a th:href="@{/categorias}">Lista de categorias</a>
+	<br />
+	<a th:href="@{/socios/agregar}">Nuevo Socio</a>
+	<br />
 
 </body>
 </html>

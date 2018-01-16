@@ -3,7 +3,7 @@ package com.club.entidades;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class CategoriaSocio {
+public class CategoriaSocio { 
 	private int id;
 	private String descripcion;
 	private Date fechaBaja;

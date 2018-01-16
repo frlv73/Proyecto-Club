@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="template :: head">
+
+</head>
+<body>
+<div th:replace="template :: nav"></div>
+
+<div th:insert="template :: container">
+
+<form th:method="POST" action="/ingresar">
+  <div class="form-group col-sm">
+    <label for="txtMail">Email</label>
+    <input type="email" class="form-control" name="txtEmail"  placeholder="Email">
+  </div>
+  <div class="form-group col-sm">
+    <label for="txtPass">Password</label>
+    <input type="password" class="form-control" name="txtPass" placeholder="Password">
+  </div>
+  <button type="submit" class="btn btn-primary">Ingresar</button>
+
+</form>
+</div>
+
+
+<a th:href="@{/}" >Volver</a>
+
+</body>
+</html>

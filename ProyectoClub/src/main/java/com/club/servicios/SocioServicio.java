@@ -1,5 +1,5 @@
 package com.club.servicios;
 
-public class SocioServicio {
+public class SocioServicio implements ISocioServicio{
 
 }

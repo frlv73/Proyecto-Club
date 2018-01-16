@@ -24,7 +24,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 
-<div th:fragment="container" class="container"></div>
+<ul th:fragment="nav" class="nav justify-content-center">
+  <li class="nav-item">
+    <a class="nav-link active" th:href="@{/}">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Contacto</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Actividades</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#">Reservas</a>
+  </li>
+</ul>
+
+<div th:fragment="container" class="container">
+</div>
 
 
 <div th:fragment="footer">
