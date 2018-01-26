@@ -4,21 +4,25 @@
 
 </head>
 <body>
-	<div th:replace="template :: nav"></div>
+	<div th:replace="template :: header"></div>
 
-	<div th:insert="template :: container">
-		<p
-			th:text="'USUARIO LOGUEADO EXITOSAMENTE ID: '+${usuarioLogueado.id} +' Nombre: ' +${usuarioLogueado.nombre}"
-			th:unless="${usuarioLogueado == null}"></p>
 
+
+	<main th:insert="template :: main">
+	<div id="home" class="col s12">Mostrar Home</div>
+	<div id="institucional" class="col s12">Mostrar Institucional</div>
+	<div id="socios" class="col s12">Mostrar Socios</div>
+	<div id="futbol" class="col s12">Mostrar Fútbol</div>
+	<div id="administrador" class="col s12">
+		<a th:href="@{/categorias}">Lista de categorias</a> <br />
+		<a th:href="@{/instalaciones}">Lista de instalaciones</a> <br /> 
+		<a th:href="@{/socios/agregar}">Nuevo Socio</a> <br />
 	</div>
 
-	<a th:href="@{/login}">Login</a>
-	<br />
-	<a th:href="@{/categorias}">Lista de categorias</a>
-	<br />
-	<a th:href="@{/socios/agregar}">Nuevo Socio</a>
-	<br />
+	</main>
+
+
+	<footer th:replace="template :: footer"></footer>
 
 </body>
 </html>

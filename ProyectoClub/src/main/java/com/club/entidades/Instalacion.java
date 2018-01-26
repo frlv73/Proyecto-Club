@@ -4,44 +4,64 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Instalacion {
-	
-	private int id_instalacion;
-	private String desc_instalacion;
+
+	private int id;
+	private String descripcion;
 	private String estado;
-	private Date fecha_baja;
+	private Date fechaBaja;
 	private ArrayList<Adicional> adicionales;
-	
-	
-	public int getId_instalacion() {
-		return id_instalacion;
+
+	public Instalacion() {
+		super();
 	}
-	public void setId_instalacion(int id_instalacion) {
-		this.id_instalacion = id_instalacion;
+
+	public Instalacion(int id, String descripcion, String estado, Date fecha_baja, ArrayList<Adicional> adicionales) {
+		super();
+		this.id = id;
+		this.descripcion = descripcion;
+		this.estado = estado;
+		this.fechaBaja = fecha_baja;
+		this.adicionales = adicionales;
 	}
-	public String getDesc_instalacion() {
-		return desc_instalacion;
+
+	public int getId() {
+		return id;
 	}
-	public void setDesc_instalacion(String desc_instalacion) {
-		this.desc_instalacion = desc_instalacion;
+
+	public void setId(int id) {
+		this.id = id;
 	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
 	public String getEstado() {
 		return estado;
 	}
+
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-	public Date getFecha_baja() {
-		return fecha_baja;
+
+	public Date getFechaBaja() {
+		return fechaBaja;
 	}
-	public void setFecha_baja(Date fecha_baja) {
-		this.fecha_baja = fecha_baja;
+
+	public void setFechaBaja(Date fechaBaja) {
+		this.fechaBaja = fechaBaja;
 	}
+
 	public ArrayList<Adicional> getAdicionales() {
 		return adicionales;
 	}
+
 	public void setAdicionales(ArrayList<Adicional> adicionales) {
 		this.adicionales = adicionales;
 	}
-	
 
 }

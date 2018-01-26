@@ -33,9 +33,8 @@ public class SocioDAO implements ISocioDAO {
 		Socio socio = namedParameterJdbcTemplate.queryForObject(SQL_LOGIN, getSqlParameterByModel(new Socio(email, pass)), new SocioMapper()) ;
 		return socio;
 	}
-	
-	
 
+	//Setea los parámetros a enviar en la consulta a la base de datos
 	private SqlParameterSource getSqlParameterByModel(Socio socio) {
 		MapSqlParameterSource paramSource = new MapSqlParameterSource();
 		if (socio != null) {
@@ -54,7 +53,7 @@ public class SocioDAO implements ISocioDAO {
 		return paramSource;
 	}
 
-
+	// Mapea las filas devueltas a objetos de clase Socio
 	private static final class SocioMapper implements RowMapper<Socio> {
 		public Socio mapRow(ResultSet rs, int rowNum) throws SQLException {
 			Socio socio = new Socio();

@@ -4,13 +4,13 @@
 
 </head>
 <body>
-	
+	<div th:replace="template :: header"></div>
 
-	<div th:insert="template :: container">
+	<div th:insert="template :: main">
 	<h4>Lista Categorías</h4>
 	<br/>
 	<br/>
-		<table class="table table-hover">
+		<table class="responsive-table striped">
 			<tr>
 				<th>ID</th>
 				<th>Descripcion</th>
