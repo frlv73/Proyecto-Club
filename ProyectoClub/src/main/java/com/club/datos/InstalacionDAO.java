@@ -15,10 +15,11 @@ import org.springframework.stereotype.Repository;
 import com.club.entidades.Instalacion;
 
 @Repository
-public class InstalacionDAO implements IInstalacionDAO{
-	
+public class InstalacionDAO implements IInstalacionDAO {
+
 	// Definición de consultas a la BD
 	private static String SQL_BUSCAR_TODAS = "SELECT * FROM instalaciones";
+	private static String SQL_BUSCAR_POR_ID = "SELECT * FROM instalaciones WHERE id = :id";
 
 	NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
@@ -31,10 +32,30 @@ public class InstalacionDAO implements IInstalacionDAO{
 
 	@Override
 	public List<Instalacion> getAllInstalaciones() {
-		List<Instalacion> lista = namedParameterJdbcTemplate.query(SQL_BUSCAR_TODAS, getSqlParameterByModel(null), new InstalacionMapper());
+		List<Instalacion> lista = namedParameterJdbcTemplate.query(SQL_BUSCAR_TODAS, getSqlParameterByModel(null),
+				new InstalacionMapper());
 		return lista;
 	}
-	
+
+	@Override
+	public Instalacion getInstalacionPorId(int idInstalacion) {
+		Instalacion instalacion = namedParameterJdbcTemplate.queryForObject(SQL_BUSCAR_POR_ID,
+				getSqlParameterByModel(new Instalacion(idInstalacion)), new InstalacionMapper());
+		return instalacion;
+	}
+
+	@Override
+	public void actualizar(Instalacion ins) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void agregar(Instalacion ins) {
+		// TODO Auto-generated method stub
+
+	}
+
 	private SqlParameterSource getSqlParameterByModel(Instalacion instalacion) {
 		MapSqlParameterSource paramSource = new MapSqlParameterSource();
 		if (instalacion != null) {

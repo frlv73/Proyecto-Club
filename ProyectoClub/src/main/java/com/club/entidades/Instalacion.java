@@ -10,9 +10,14 @@ public class Instalacion {
 	private String estado;
 	private Date fechaBaja;
 	private ArrayList<Adicional> adicionales;
-
+	
 	public Instalacion() {
 		super();
+	}
+
+	public Instalacion(int idInstalacion) {
+		super();
+		this.setId(idInstalacion);
 	}
 
 	public Instalacion(int id, String descripcion, String estado, Date fecha_baja, ArrayList<Adicional> adicionales) {

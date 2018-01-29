@@ -18,6 +18,24 @@ public class InstalacionServicio implements IInstalacionServicio{
 	public List<Instalacion> getAllInstalaciones() {
 		return dao.getAllInstalaciones();
 	}
+
+	@Override
+	public Instalacion getInstalacionPorId(int idInstalacion) {
+		
+		return dao.getInstalacionPorId(idInstalacion);
+	}
+
+	@Override
+	public void actualizar(Instalacion ins) {
+		dao.actualizar(ins);
+		
+	}
+
+	@Override
+	public void agregar(Instalacion ins) {
+		dao.agregar(ins);
+		
+	}
 	
 	
 
