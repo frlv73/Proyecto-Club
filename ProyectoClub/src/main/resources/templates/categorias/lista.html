@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="template :: head">
-
+<head>
+<!--/*/ <th:block th:include="fragments/head :: head"></th:block>  /*/-->
 </head>
 <body>
-	<div th:replace="template :: header"></div>
+	<!--/*/ <th:block th:insert="fragments/header :: header"></th:block>  /*/-->
 
-	<div th:insert="template :: main">
+	<main >
 	<h4>Lista Categorías</h4>
 	<br/>
 	<br/>
@@ -22,13 +22,13 @@
 		</table>
 
 
-	</div>
-
 
 
 	<a th:href="@{/}">Volver a Inicio</a>
 
+	</main>
 
 
+	<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block>  /*/-->
 </body>
 </html>

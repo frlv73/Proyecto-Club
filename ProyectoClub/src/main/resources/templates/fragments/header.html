@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<body>
+<header th:fragment="header">
+	<nav class="nav-extended">
+		<div class="nav-wrapper black" th:fragment="navSuperior">
+			<a href="#" class="brand-logo">Logo</a> <a href="#"
+				data-activates="mobile" class="button-collapse"><i
+				class="material-icons">menu</i></a>
+			<ul id="nav-mobile" class="right hide-on-med-and-down">
+				<li th:switch="${usuarioLogueado}"><a th:case="null"
+					th:href="@{/login}">Ingresar</a> <a th:case="*"
+					th:text="'Bienvenido, ' +${usuarioLogueado.nombre}" th:href="@{/login}">Ingresar</a>
+
+				</li>
+				<li><a th:href="@{/registro}"
+					th:unless="${usuarioLogueado != null}">Registrarme</a></li>
+			</ul>
+			<ul class="side-nav" id="mobile">
+				<li><a href="#">Ingresar</a></li>
+				<li><a href="#">Registrarme</a></li>
+			</ul>
+		</div>
+
+		<div class="nav-content black" th:fragment="navInferior">
+			<ul class="tabs tabs-transparent">
+
+				<li class="tab"><a class="active" href="#home">Home</a></li>
+				<li class="tab"><a href="#institucional">Institucional</a></li>
+				<li class="tab"><a href="#socios">Socios</a></li>
+				<li class="tab"><a href="#futbol">Fútbol</a></li>
+				<li class="tab"><a href="#administrador">Administrador</a></li>
+			</ul>
+		</div>
+	</nav>
+
+</header>
+
+</body>
+
+</html>

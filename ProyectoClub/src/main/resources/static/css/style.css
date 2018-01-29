@@ -9,3 +9,23 @@
   main {
     flex: 1 0 auto;
   }
+  
+.picker__date-display {
+  background-color:black;
+}
+.picker__weekday-display {
+  background-color:black;
+}
+.picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {
+  background-color:black;
+}
+
+.picker__day.picker__day--today {
+    color: black;
+}
+
+.picker__close, .picker__today {
+    font-size: 1.1rem;
+    padding: 0 1rem;
+    color: black;
+}

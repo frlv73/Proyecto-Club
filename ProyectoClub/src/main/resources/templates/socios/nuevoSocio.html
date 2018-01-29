@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="template :: head">
-
+<head >
+<!--/*/ <th:block th:include="fragments/head :: head"></th:block>  /*/-->
 </head>
 <body>
-<div th:replace="template :: nav"></div>
+<!--/*/ <th:block th:insert="fragments/header :: header"></th:block>  /*/-->
 
-<div th:insert="template :: container">
+<main>
 
 <form>
   <div class="form-group col-md-6">
@@ -49,11 +49,7 @@
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-</div>
-
-
-<a th:href="@{/login}" >Login</a>
-<a th:href="@{/categorias}" >Lista de categorias</a>
+</main>
 
 </body>
 </html>

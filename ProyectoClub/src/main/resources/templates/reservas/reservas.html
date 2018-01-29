@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<!--/*/ <th:block th:include="fragments/head :: head"></th:block>  /*/-->
+<script type="text/javascript">
+$(document).ready(function() {
+    $('select').material_select();
+    
+    $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 1, // Creates a dropdown of 15 years to control year,
+        today: 'Hoy',
+        clear: 'Limpiar',
+        close: 'Ok',
+        format: 'dd/mm/yyyy',
+        closeOnSelect: false // Close upon selecting a date,
+      });
+      
+    $('.timepicker').pickatime({
+    default: 'now', // Set default time: 'now', '1:30AM', '16:30'
+    fromnow: 0,       // set default time to * milliseconds from now (using with default = 'now')
+    twelvehour: false, // Use AM/PM or 24-hour format
+    donetext: 'OK', // text for done-button
+    cleartext: 'Limpiar', // text for clear-button
+    canceltext: 'Cancelar', // Text for cancel-button
+    autoclose: false, // automatic close timepicker
+    ampmclickable: true, // make AM PM clickable
+    aftershow: function(){} //Function for after opening timepicker
+    });
+  });
+  
+
+</script>
+</head>
+
+<body>
+	<!--/*/ <th:block th:insert="fragments/header :: header"></th:block>  /*/-->
+
+
+	<main>
+	<div class="row">
+		<h4>Nueva Reserva</h4>
+		<br />
+		<form action="" method="POST" class="col s12">
+			<div class="row">
+				<div class="input-field col s12 l2">
+					<select id="cbxInstalacion" name="cbxInstalacion">
+						<option value="" disabled selected>Instalaciones</option>
+						<option th:each="ins : ${listaInstalaciones}" th:value="${ins.id}"
+							th:text="${ins.descripcion}" />
+
+					</select> <label>Seleccionar Instalacion</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s12 l2">
+					<label for="datepicker">Seleccionar Fecha</label> <input
+						type="text" class="datepicker">
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s6 l2">
+					<label for="timepickerinicio">Seleccionar Hora Inicio</label> <input
+						type="text" class="timepicker">
+				</div>
+				<div class="input-field col s6 l2">
+					<label for="timepickerfin">Seleccionar Hora Fin</label> <input
+						type="text" class="timepickerfin">
+				</div>
+
+			</div>
+		</form>
+
+	</div>
+	<div class="row">
+		<div class="col l4">
+			<a th:href="@{/}">Volver a Inicio</a>
+		</div>
+	</div>
+
+
+
+	</main>
+
+
+
+
+	<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block>  /*/-->
+
+</body>
+</html>

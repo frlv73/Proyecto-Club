@@ -27,12 +27,12 @@ public class ControladorLogin {
 		socio = servicio.validarUsuario(email, pass);
 		if(null != socio) {
 		model.put("usuarioLogueado", socio);
-		return "/index";
+		
 		} else {
 			//TO DO: Mensaje de error en Login
-			return "/index";
+			
 		}
-
+		return "/index";
 		
 	}
 

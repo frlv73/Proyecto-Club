@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="template :: head">
-
+<head>
+<!--/*/ <th:block th:include="fragments/head :: head"></th:block>  /*/-->
 </head>
 <body>
-	<div th:replace="template :: header"></div>
+	<!--/*/ <th:block th:insert="fragments/header :: header"></th:block>  /*/-->
 
 
 
-	<main th:insert="template :: main">
+	<main>
 	<h5>Lista de Instalaciones</h5>
 	<br />
 	<table class="centered responsive-table striped">
@@ -33,7 +33,7 @@
 	</main>
 
 
-	<footer th:replace="template :: footer"></footer>
+	<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block>  /*/-->
 
 </body>
 </html>

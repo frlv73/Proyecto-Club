@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="template :: head">
-
+<head>
+<!--/*/ <th:block th:include="fragments/head :: head"></th:block>  /*/-->
 </head>
 <body>
-	<div th:replace="template :: header"></div>
-
-
-
-	<main th:insert="template :: main">
-	<div id="home" class="col s12">Mostrar Home</div>
-	<div id="institucional" class="col s12">Mostrar Institucional</div>
-	<div id="socios" class="col s12">Mostrar Socios</div>
-	<div id="futbol" class="col s12">Mostrar Fútbol</div>
-	<div id="administrador" class="col s12">
-		<a th:href="@{/categorias}">Lista de categorias</a> <br />
-		<a th:href="@{/instalaciones}">Lista de instalaciones</a> <br /> 
-		<a th:href="@{/socios/agregar}">Nuevo Socio</a> <br />
-	</div>
-
+	<header>
+	<!--/*/ <th:block th:include="fragments/header :: header"></th:block>  /*/-->
+	</header>
+	
+	<main>
+			<h4>Pagina principal</h4>
+		<div id="home" class="col s12">Mostrar Home</div>
+		<div id="institucional" class="col s12">Mostrar Institucional</div>
+		<div id="socios" class="col s12">Mostrar Socios</div>
+		<div id="futbol" class="col s12">Mostrar Fútbol</div>
+		<div id="administrador" class="col s12">
+			<a th:href="@{/categorias}">Lista de categorias</a> <br /> <a
+				th:href="@{/instalaciones}">Lista de instalaciones</a> <br /> <a
+				th:href="@{/socios/agregar}">Nuevo Socio</a> <br /> <a
+				th:href="@{/reservas}">Nueva Reserva</a>
+		</div>
 	</main>
+	
 
-
-	<footer th:replace="template :: footer"></footer>
+	<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block>  /*/-->
+	
 
 </body>
 </html>
