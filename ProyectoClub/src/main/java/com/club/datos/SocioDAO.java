@@ -18,6 +18,9 @@ import com.club.entidades.Socio;
 public class SocioDAO implements ISocioDAO {
 
 	private static String SQL_LOGIN = "SELECT * FROM socios WHERE mail= :email AND password= :password";
+	private static String SQL_INSERTAR = "INSERT INTO socios (dni, nombre, apellido, localidad, direccion, telefono, "
+			                           + "mail, password, estado, id_categoria_socio) VALUES (:dni, :nombre, :apellido, :localidad, :direccion,"
+			                           + ":telefono, :email, :password, :estado, :id_categoria)";
 
 	NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
@@ -30,11 +33,18 @@ public class SocioDAO implements ISocioDAO {
 
 	@Override
 	public Socio login(String email, String pass) {
-		Socio socio = namedParameterJdbcTemplate.queryForObject(SQL_LOGIN, getSqlParameterByModel(new Socio(email, pass)), new SocioMapper()) ;
+		Socio socio = namedParameterJdbcTemplate.queryForObject(SQL_LOGIN,
+				getSqlParameterByModel(new Socio(email, pass)), new SocioMapper());
 		return socio;
 	}
 
-	//Setea los parámetros a enviar en la consulta a la base de datos
+	@Override
+	public void registrar(Socio socio) {
+		namedParameterJdbcTemplate.update(SQL_INSERTAR, getSqlParameterByModel(socio));
+
+	}
+
+	// Setea los parámetros a enviar en la consulta a la base de datos
 	private SqlParameterSource getSqlParameterByModel(Socio socio) {
 		MapSqlParameterSource paramSource = new MapSqlParameterSource();
 		if (socio != null) {
@@ -44,10 +54,13 @@ public class SocioDAO implements ISocioDAO {
 			paramSource.addValue("apellido", socio.getApellido());
 			paramSource.addValue("email", socio.getEmail());
 			paramSource.addValue("password", socio.getPassword());
+			paramSource.addValue("localidad", socio.getLocalidad());
 			paramSource.addValue("direccion", socio.getDireccion());
 			paramSource.addValue("telefono", socio.getTelefono());
-			//Si no tenemos definida la categoría del socio asignamos el valor 0 al parámetro, si no, el id de la categoría
-			paramSource.addValue("id_categoria", socio.getCategoriaSocio() != null ? socio.getCategoriaSocio().getId(): 0);
+			// Si no tenemos definida la categoría del socio asignamos el valor 0 al
+			// parámetro, si no, el id de la categoría
+			paramSource.addValue("id_categoria",
+					socio.getCategoriaSocio() != null ? socio.getCategoriaSocio().getId() : 0);
 			paramSource.addValue("estado", socio.getEstado());
 		}
 		return paramSource;
@@ -67,7 +80,7 @@ public class SocioDAO implements ISocioDAO {
 			socio.setTelefono(rs.getString("telefono"));
 			socio.setEstado(rs.getString("estado"));
 			socio.getCategoriaSocio().setId(rs.getInt("id_categoria_socio"));
-			
+
 			return socio;
 		}
 	}

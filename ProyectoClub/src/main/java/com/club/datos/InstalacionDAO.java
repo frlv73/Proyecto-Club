@@ -21,7 +21,7 @@ public class InstalacionDAO implements IInstalacionDAO {
 	private static String SQL_BUSCAR_TODAS = "SELECT * FROM instalaciones";
 	private static String SQL_BUSCAR_POR_ID = "SELECT * FROM instalaciones WHERE id_instalacion = :id";
 	private static String SQL_INSERTAR = "INSERT INTO instalaciones (id, descripcion, fecha_baja) VALUES (:id, :descripcion, :fecha_baja)";
-	private static String SQL_ACTUALIZAR = "UPDATE instalaciones SET descripcion = :descripcion, fecha_baja = :fecha_baja WHERE id_instalacion = :id";
+	private static String SQL_ACTUALIZAR = "UPDATE instalaciones SET descripcion = :descripcion, estado = :estado, fecha_baja = :fecha_baja WHERE id_instalacion = :id";
 
 	/*
 	 * set fecha_baja today() private static String SQL_ELIMINAR =
@@ -52,13 +52,13 @@ public class InstalacionDAO implements IInstalacionDAO {
 
 	@Override
 	public void actualizar(Instalacion ins) {
-		// TODO Auto-generated method stub
+		namedParameterJdbcTemplate.update(SQL_ACTUALIZAR, getSqlParameterByModel(ins));
 
 	}
 
 	@Override
 	public void agregar(Instalacion ins) {
-		// TODO Auto-generated method stub
+		namedParameterJdbcTemplate.update(SQL_INSERTAR, getSqlParameterByModel(ins));
 
 	}
 
@@ -74,6 +74,7 @@ public class InstalacionDAO implements IInstalacionDAO {
 			paramSource.addValue("id", instalacion.getId());
 			paramSource.addValue("descripcion", instalacion.getDescripcion());
 			paramSource.addValue("fecha_baja", instalacion.getFechaBaja());
+			paramSource.addValue("estado", instalacion.getEstado());
 		}
 		return paramSource;
 	}
@@ -86,6 +87,7 @@ public class InstalacionDAO implements IInstalacionDAO {
 			ins.setId(rs.getInt("id_instalacion"));
 			ins.setDescripcion(rs.getString("descripcion"));
 			ins.setFechaBaja(rs.getDate("fecha_baja"));
+			ins.setEstado(rs.getString("estado"));
 			return ins;
 		}
 

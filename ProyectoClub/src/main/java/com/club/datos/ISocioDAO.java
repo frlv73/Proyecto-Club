@@ -6,4 +6,6 @@ public interface ISocioDAO {
 
 	Socio login(String email, String pass);
 
+	void registrar(Socio socio);
+
 }

@@ -9,6 +9,15 @@ public class CategoriaSocio {
 	private Date fechaBaja;
 	private ArrayList<DescuentoCategoriaSocio> descuentos;
 
+	public CategoriaSocio(int id) {
+		super();
+		this.setId(id);
+	}
+	
+	public CategoriaSocio() {
+		super();
+	}
+
 	public int getId() {
 		return id;
 	}

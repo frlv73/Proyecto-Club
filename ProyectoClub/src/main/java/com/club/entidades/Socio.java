@@ -7,6 +7,7 @@ public class Socio {
 	private String nombre;
 	private String apellido;
 	private String direccion;
+	private String localidad;
 	private String telefono;
 	private String email;
 	private String usuario;
@@ -112,6 +113,14 @@ public class Socio {
 
 	public void setCategoriaSocio(CategoriaSocio categoriaSocio) {
 		this.categoriaSocio = categoriaSocio;
+	}
+
+	public String getLocalidad() {
+		return localidad;
+	}
+
+	public void setLocalidad(String localidad) {
+		this.localidad = localidad;
 	}
 
 }

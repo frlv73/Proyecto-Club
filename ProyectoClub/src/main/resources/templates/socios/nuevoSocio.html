@@ -1,48 +1,76 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head >
+<head>
 <!--/*/ <th:block th:include="fragments/head :: head"></th:block>  /*/-->
 </head>
 <body>
-<!--/*/ <th:block th:insert="fragments/header :: header"></th:block>  /*/-->
+	<!--/*/ <th:block th:insert="fragments/header :: header"></th:block>  /*/-->
 
-<main>
-
+	<main>
+<h4 class="center">Registro</h4>
 	<div class="row">
-		<form class="col s12" method="POST">
+		<form class="col s12" method="POST" action="/registrar" modelAttribute="formSocio">
 			<fieldset>
 				<legend>Datos Socio</legend>
 				<div class="row">
-					<div class="input-field col s6 l1">
-						<input th:value="${instalacion.id != 0} ? ${instalacion.id}"
-							id="txtId" type="text"> <label for="txtId">ID</label>
+					<div class="input-field col s4 l2">
+						<input type="text" id="txtDNI" name="dni"> <label for="txtDNI">DNI</label>
 					</div>
 				</div>
 				<div class="row">
 					<div class="input-field col s12 l4">
-						<input th:value="${instalacion.descripcion}" id="txtDescripcion"
-							type="text"> <label for="txtDescripcion">Descripción</label>
+						<input type="text" id="txtNombre" name="nombre"> <label for="txtNombre">Nombre</label>
 					</div>
-					<div class="input-field col s6 l2">
-						<select id="cbxEstado" name="cbxEstado">
-							<option value="" disabled selected>Estado</option>
-							<option value="0">Deshabilitada</option>
-							<option value="1">Habilitada</option>
-						</select> <label for="cbxEstado">Estado</label>
+					<div class="input-field col s12 l4">
+						<input type="text" id="txtApellido" name="apellido"> <label
+							for="txtApellido">Apellido</label>
 					</div>
+
+				</div>
+				<div class="row">
+					<div class="input-field col s12 l4">
+						<input type="text" id="txtLocalidad" name="localidad"> <label
+							for="txtLocalidad">Localidad</label>
+					</div>
+					<div class="input-field col s12 l4">
+						<input type="text" id="txtDireccion" name="direccion"> <label
+							for="txtDireccion">Dirección</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12 l4">
+						<input type="text" id="txtTelefono" name="telefono"> <label
+							for="txtTelefono">Teléfono</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12 l4">
+						<input type="text" id="txtEmail" name="email"> <label for="txtEmail">Email</label>
+					</div>
+					<div class="input-field col s12 l4">
+						<input type="password" id="txtPassword" name="password"> <label
+							for="txtPassword">Contraseña</label>
+					</div>
+
 				</div>
 
 				<div class="row">
-					<input type="submit" class="btn waves-effect waves-light black"
-						th:value="${instalacion.id != 0} ? 'Actualizar' : 'Agregar'">
+					<div class="input-field col s12 center hide-on-large-only">
+						<input type="submit" class="btn waves-effect waves-light black"
+							value="Registrarme">
+					</div>
+					<div class="input-field col l4 hide-on-med-and-down">
+						<input type="submit" class="btn waves-effect waves-light black"
+							value="Registrarme">
+					</div>
 				</div>
 			</fieldset>
 		</form>
 	</div>
-		<div class="row">
-		<a th:href="@{/instalaciones}">Volver a lista</a>
+	<div class="row">
+		<a th:href="@{/}">Volver</a>
 	</div>
-</main>
+	</main>
 
 </body>
 </html>
