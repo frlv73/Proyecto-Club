@@ -13,4 +13,6 @@ public interface IInstalacionServicio {
 	public void actualizar(Instalacion ins);
 
 	public void agregar(Instalacion ins);
+
+	public void eliminar(int id);
 }

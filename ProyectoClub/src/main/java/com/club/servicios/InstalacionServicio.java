@@ -36,6 +36,12 @@ public class InstalacionServicio implements IInstalacionServicio{
 		dao.agregar(ins);
 		
 	}
+
+	@Override
+	public void eliminar(int id) {
+		dao.eliminar(id);
+		
+	}
 	
 	
 

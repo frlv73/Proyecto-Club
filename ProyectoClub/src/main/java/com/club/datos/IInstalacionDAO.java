@@ -13,4 +13,6 @@ public interface IInstalacionDAO {
 
 	public void agregar(Instalacion ins);
 
+	public void eliminar(int id);
+
 }

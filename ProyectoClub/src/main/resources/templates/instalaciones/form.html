@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head >
+<head>
 <!--/*/ <th:block th:include="fragments/head :: head"></th:block>  /*/-->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('select').material_select();
+	});
+</script>
 </head>
 <body>
-<!--/*/ <th:block th:insert="fragments/header :: header"></th:block>  /*/-->
-
-<main>
-
+	<!--/*/ <th:block th:insert="fragments/header :: header"></th:block>  /*/-->
+	<main>
 	<div class="row">
 		<form class="col s12" method="POST">
 			<fieldset>
-				<legend>Datos Socio</legend>
+				<legend>Datos Instalación</legend>
 				<div class="row">
 					<div class="input-field col s6 l1">
 						<input th:value="${instalacion.id != 0} ? ${instalacion.id}"
@@ -42,7 +45,9 @@
 		<div class="row">
 		<a th:href="@{/instalaciones}">Volver a lista</a>
 	</div>
-</main>
+	</main>
+
+	<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block>  /*/-->
 
 </body>
 </html>

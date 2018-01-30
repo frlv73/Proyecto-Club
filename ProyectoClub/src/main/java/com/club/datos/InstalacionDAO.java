@@ -19,8 +19,14 @@ public class InstalacionDAO implements IInstalacionDAO {
 
 	// Definición de consultas a la BD
 	private static String SQL_BUSCAR_TODAS = "SELECT * FROM instalaciones";
-	private static String SQL_BUSCAR_POR_ID = "SELECT * FROM instalaciones WHERE id = :id";
+	private static String SQL_BUSCAR_POR_ID = "SELECT * FROM instalaciones WHERE id_instalacion = :id";
+	private static String SQL_INSERTAR = "INSERT INTO instalaciones (id, descripcion, fecha_baja) VALUES (:id, :descripcion, :fecha_baja)";
+	private static String SQL_ACTUALIZAR = "UPDATE instalaciones SET descripcion = :descripcion, fecha_baja = :fecha_baja WHERE id_instalacion = :id";
 
+	/*
+	 * set fecha_baja today() private static String SQL_ELIMINAR =
+	 * "DELETE FROM instalaciones HERE id_instalacion = :id";
+	 */
 	NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
 	@Autowired
@@ -52,6 +58,12 @@ public class InstalacionDAO implements IInstalacionDAO {
 
 	@Override
 	public void agregar(Instalacion ins) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void eliminar(int id) {
 		// TODO Auto-generated method stub
 
 	}

@@ -1,31 +1,48 @@
 @charset "UTF-8";
 
-  body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
 
-  main {
-    flex: 1 0 auto;
-  }
-  
+main {
+	flex: 1 0 auto;
+}
+
+fieldset {
+	border: 1px solid #a6a6a6
+}
+
+legend {
+	color: #a6a6a6;
+}
+
+
+.nav-extended .nav-wrapper .brand-logo img {
+	margin-left: 10px;
+	height: 64px;
+}
+
 .picker__date-display {
-  background-color:black;
+	background-color: black;
 }
+
 .picker__weekday-display {
-  background-color:black;
+	background-color: black;
 }
-.picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {
-  background-color:black;
+
+.picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected
+	{
+	background-color: black;
 }
 
 .picker__day.picker__day--today {
-    color: black;
+	color: black;
 }
 
 .picker__close, .picker__today {
-    font-size: 1.1rem;
-    padding: 0 1rem;
-    color: black;
+	font-size: 1.1rem;
+	padding: 0 1rem;
+	color: black;
 }

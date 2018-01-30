@@ -20,7 +20,6 @@ public class ControladorInstalaciones {
 	@Autowired
 	private IInstalacionServicio servicio;
 
-	@Autowired
 	private Instalacion instalacion;
 
 	// Página lista de instalaciones
@@ -52,18 +51,23 @@ public class ControladorInstalaciones {
 		model.put("titulo", "Modificar Instalación");
 		return "instalaciones/form";
 	}
-	
-	
-	//Procesa el form de agregar y editar. Revisar que funcione el ModelAttribute
+
+	// Procesa el form de agregar y editar. Revisar que funcione el ModelAttribute
 	@RequestMapping(value = "/guardar", method = RequestMethod.POST)
 	public String guardar(@ModelAttribute("form") Instalacion ins, ModelMap model) {
-		if(null != ins && 0 != ins.getId()) {
+		if (null != ins && 0 != ins.getId()) {
 			servicio.actualizar(ins);
-		}
-		else {
+		} else {
 			servicio.agregar(ins);
 		}
-		
+
+		return "instalaciones/lista";
+	}
+
+	@RequestMapping(value = "/eliminar/{id}", method = RequestMethod.GET)
+	public String eliminar(@PathVariable("id") int id) {
+
+		servicio.eliminar(id);
 		return "instalaciones/lista";
 	}
 
