@@ -1,5 +1,7 @@
 package com.club.servicios;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +28,11 @@ public class SocioServicio implements ISocioServicio{
 		socio.setCategoriaSocio(new CategoriaSocio(1));
 		dao.registrar(socio);
 		
+	}
+
+	@Override
+	public List<Socio> getAllSocios() {
+		return dao.getAllSocios();
 	}
 
 }

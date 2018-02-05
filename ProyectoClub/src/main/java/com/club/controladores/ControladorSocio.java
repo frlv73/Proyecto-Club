@@ -17,6 +17,13 @@ public class ControladorSocio {
 
 	 @Autowired
 	private ISocioServicio servicio;
+	 
+	 @RequestMapping(method = RequestMethod.GET)
+		public String lista(ModelMap model) {
+			model.put("listaSocios", servicio.getAllSocios());
+			model.put("titulo", "Lista de Socios");
+			return "socios/listaSocios";
+		}
 
 	@RequestMapping(value = "/registrar", method = RequestMethod.POST)
 	public String registrar(@ModelAttribute("formSocio") Socio socio, ModelMap model) {

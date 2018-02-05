@@ -2,6 +2,7 @@ package com.club.datos;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -17,6 +18,7 @@ import com.club.entidades.Socio;
 @Repository
 public class SocioDAO implements ISocioDAO {
 
+	private static String SQL_BUSCAR_TODOS = "Select * from Socios";
 	private static String SQL_LOGIN = "SELECT * FROM socios WHERE mail= :email AND password= :password";
 	private static String SQL_INSERTAR = "INSERT INTO socios (dni, nombre, apellido, localidad, direccion, telefono, "
 			                           + "mail, password, estado, id_categoria_socio) VALUES (:dni, :nombre, :apellido, :localidad, :direccion,"
@@ -83,6 +85,14 @@ public class SocioDAO implements ISocioDAO {
 
 			return socio;
 		}
+	}
+
+	@Override
+	public List<Socio> getAllSocios() {
+		List<Socio> lista = namedParameterJdbcTemplate.query(SQL_BUSCAR_TODOS, getSqlParameterByModel(null),
+				new SocioMapper());
+		return lista;
+		
 	}
 
 }

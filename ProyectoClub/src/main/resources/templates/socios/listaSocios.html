@@ -9,11 +9,10 @@
 
 
 	<main>
-	<h5 class="center">Lista de Instalaciones</h5>
+	<h5 class="center">Lista de Socios</h5>
 	<br />
 	<div class="row">
 	<div class="col s12">
-	<a th:href="@{/instalaciones/agregar}" class="btn waves-effect waves-light black">Nueva Instalación</a>
 	</div>
 	</div>
 	<div class="row">
@@ -22,17 +21,19 @@
 		<thead> 
 			<tr>
 				<th>ID</th>
-				<th>Descripción</th>
+				<th>DNI</th>
+				<th>Nombre</th>
+				<th>Apellido</th>
 				<th>Acciones</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:each="ins : ${listaInstalaciones}">
-				<td th:text="${ins.id}"></td>
-				<td th:text="${ins.descripcion}"></td>
-				<td><a th:href="@{'/instalaciones/editar/' + ${ins.id}}" class="btn-floating btn-small waves-effect waves-light black"><i class="material-icons">edit</i></a> <a
-					th:href="@{'/instalaciones/eliminar/' + ${ins.id}}" class="btn-floating btn-small waves-effect waves-light black"><i class="material-icons">delete</i></a></td>
-
+			<tr th:each="soc : ${listaSocios}">
+				<td th:text="${soc.id}"></td>
+				<td th:text="${soc.dni}"></td>
+				<td th:text="${soc.nombre}"></td>
+				<td th:text="${soc.apellido}"></td>
+				
 			</tr>
 		</tbody>
 	</table>
