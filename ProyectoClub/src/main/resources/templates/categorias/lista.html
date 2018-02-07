@@ -4,29 +4,48 @@
 <!--/*/ <th:block th:include="fragments/head :: head"></th:block>  /*/-->
 </head>
 <body>
-	<!--/*/ <th:block th:insert="fragments/header :: header"></th:block>  /*/-->
+	<!--/*/ <th:block th:insert="fragments/headerAdmin :: header"></th:block>  /*/-->
 
-	<main >
-	<h4>Lista Categor�as</h4>
-	<br/>
-	<br/>
-		<table class="responsive-table striped">
-			<tr>
-				<th>ID</th>
-				<th>Descripcion</th>
-			</tr>
-			<tr th:each="cat : ${listaCategorias}">
-				<td th:text="${cat.id}"></td>
-				<td th:text="${cat.descripcion}"></td>
-			</tr>
-		</table>
+	<main>
+	<h5 class="center">Lista de Categorías</h5>
+	<br />
+	<div class="row">
+		<div class="col s12">
+			<a th:href="@{/categorias/agregar}"
+				class="btn waves-effect waves-light black">Nueva Categoría</a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col s12">
+			<table class="centered responsive-table striped">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Descripción</th>
+						<th>Acciones</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="cat : ${listaCategorias}">
+						<td th:text="${cat.id}"></td>
+						<td th:text="${cat.descripcion}"></td>
+						<td><a th:href="@{'/categorias/editar/' + ${cat.id}}"
+							class="btn-floating btn-small waves-effect waves-light black"><i
+								class="material-icons">edit</i></a> <a
+							th:href="@{'/categorias/eliminar/' + ${cat.id}}"
+							class="btn-floating btn-small waves-effect waves-light black"><i
+								class="material-icons">delete</i></a></td>
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+	</div>
 
 
 
 
-	<a th:href="@{/}">Volver a Inicio</a>
-
-	</main>
+	<a th:href="@{/}">Volver a Inicio</a> </main>
 
 
 	<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block>  /*/-->

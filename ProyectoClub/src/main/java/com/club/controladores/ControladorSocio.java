@@ -12,7 +12,7 @@ import com.club.entidades.Socio;
 import com.club.servicios.ISocioServicio;
 
 @Controller
-@RequestMapping({ "/socios", "/" })
+@RequestMapping("/socios")
 public class ControladorSocio {
 
 	 @Autowired

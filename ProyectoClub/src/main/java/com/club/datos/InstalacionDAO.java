@@ -21,7 +21,7 @@ public class InstalacionDAO implements IInstalacionDAO {
 	private static String SQL_BUSCAR_TODAS = "SELECT * FROM instalaciones";
 	private static String SQL_BUSCAR_POR_ID = "SELECT * FROM instalaciones WHERE id_instalaciones = :id";
 	private static String SQL_INSERTAR = "INSERT INTO instalaciones (descripcion,estado) VALUES (:descripcion, :estado)";
-	private static String SQL_ACTUALIZAR = "UPDATE instalaciones SET descripcion = :descripcion, estado = :estado, fecha_baja = :fecha_baja WHERE id_instalaciones = :id";
+	private static String SQL_ACTUALIZAR = "UPDATE instalaciones SET descripcion = :descripcion, estado = :estado, fecha_baja = :fecha_baja WHERE id_instalacion = :id";
 
 	/*
 	 * set fecha_baja today() private static String SQL_ELIMINAR =
@@ -84,7 +84,7 @@ public class InstalacionDAO implements IInstalacionDAO {
 		@Override
 		public Instalacion mapRow(ResultSet rs, int numFilas) throws SQLException {
 			Instalacion ins = new Instalacion();
-			ins.setId(rs.getInt("id_instalaciones"));
+			ins.setId(rs.getInt("id_instalacion"));
 			ins.setDescripcion(rs.getString("descripcion"));
 			//ins.setFechaBaja(rs.getDate("fecha_baja"));
 			ins.setEstado(rs.getString("estado"));

@@ -6,10 +6,10 @@
 	<header th:fragment="header">
 		<ul id="dropdown-menu" class="dropdown-content">
 			<li><a class="black-text" th:href="@{/socios}">Socios</a></li>
-			<li><a class="black-text" th:href="@{/categorias}">Categorías</a></li>
+			<li><a class="black-text" th:href="@{/categorias}">Categor�as</a></li>
 			<li><a class="black-text" th:href="@{/instalaciones}">Instalaciones</a></li>
 			<li><a class="black-text" th:href="@{/Actividades}">Actividades</a></li>
-			<li><a class="black-text"th:href="@{/reservas}">Reservas</a></li>
+			<li><a class="black-text" th:href="@{/reservas}">Reservas</a></li>
 		</ul>
 		<nav class="nav-extended">
 			<div class="nav-wrapper black" th:fragment="navSuperior">
@@ -20,10 +20,11 @@
 
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
 					<li th:switch="${usuarioLogueado}"><a th:case="null"
-						th:href="@{/login}">Ingresar</a> <a th:case="*"
-						 href="#!"
-						
-						class="dropdown-button" data-beloworigin="true" data-activates="dropdown-menu"><span th:text="${usuarioLogueado.nombre}"></span><i class="material-icons right">arrow_drop_down</i></a></li>
+						th:href="@{/login}">Ingresar</a> <a th:case="*" href="#!"
+						class="dropdown-button" data-beloworigin="true"
+						data-activates="dropdown-menu"><span
+							th:text="${usuarioLogueado.nombre}"></span><i
+							class="material-icons right">arrow_drop_down</i></a></li>
 					<li><a th:href="@{/registro}"
 						th:unless="${usuarioLogueado != null}">Registrarme</a></li>
 				</ul>
@@ -32,16 +33,14 @@
 					<li><a href="#">Registrarme</a></li>
 				</ul>
 			</div>
-
+			
 			<div class="nav-content black" th:fragment="navInferior">
 				<ul class="tabs tabs-transparent">
 
-					<li class="tab"><a class="active" href="#home">Home</a></li>
-					<li class="tab"><a href="#institucional">Institucional</a></li>
-					<li class="tab"><a href="#socios">Socios</a></li>
-					<li class="tab"><a href="#futbol">Fútbol</a></li>
+					<li class="tab"><a class="active" href="#!">Administración</a></li>
 				</ul>
 			</div>
+
 		</nav>
 
 	</header>

@@ -8,9 +8,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
 @SessionAttributes("usuarioLogueado")
+@RequestMapping(value={"/", "/index"})
 public class ControladorHome {
 	
-	@RequestMapping(value={"/", "/index"}, method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public String index(ModelMap modelMap) {
 		
 		modelMap.put("titulo", "Página de inicio");

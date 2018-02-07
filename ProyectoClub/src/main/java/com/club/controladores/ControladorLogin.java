@@ -32,7 +32,7 @@ public class ControladorLogin {
 			//TO DO: Mensaje de error en Login
 			
 		}
-		return "/";
+		return "/index";
 		
 	}
 

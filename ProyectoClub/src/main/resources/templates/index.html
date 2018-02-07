@@ -5,27 +5,38 @@
 </head>
 <body>
 	<header>
-	<!--/*/ <th:block th:include="fragments/header :: header"></th:block>  /*/-->
+		<!--/*/ <th:block th:include="fragments/header :: header"></th:block>  /*/-->
 	</header>
-	
+
 	<main>
-			<h4>Página principal</h4>
-		<div id="home" class="col s12">Mostrar Home</div>
-		<div id="institucional" class="col s12">Mostrar Institucional</div>
-		<div id="socios" class="col s12">Mostrar Socios</div>
-		<div id="futbol" class="col s12">Mostrar Fútbol</div>
-		<div id="administrador" class="col s12">
-			<a th:href="@{/categorias}">Lista de Categorías</a> <br /> <a
-				th:href="@{/instalaciones}">Lista de Instalaciones</a> <br /> <a
-				th:href="@{/socios/listaSocios}">Lista de Socios</a> <br /> <a
-				h:href="@{/socios/agregar}">Nuevo Socio</a> <br /> <a
-				th:href="@{/reservas}">Nueva Reserva</a>
-		</div>
-	</main>
+	<h4>PÃ¡gina Principal</h4>
+	<div id="home" class="col s12">Mostrar Home</div>
+	<div id="institucional" class="col s12">
 	
+	<div id="map" style="width: 500px; height: 500px; ">
+	
+	</div>
+	<script>
+		function initMap(){
+			var location = {lat: -33, lng:-60};
+			var map = new google.maps.Map(document.getElementById('map'), {
+				zoom: 4,
+				center: location
+			});
+		}
+		
+	</script>
+	
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDb69K45i9JTDBHfBrXnEjLNB893P4Tiw4&callback=initMap" type="text/javascript"></script>
+
+	</div>
+	<div id="socios" class="col s12">Mostrar Socios</div>
+	<div id="futbol" class="col s12">Mostrar FÃºtbol</div>
+	</main>
+
 
 	<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block>  /*/-->
-	
+
 
 </body>
 </html>
