@@ -19,6 +19,9 @@ public class CategoriaSocioDAO implements ICategoriaSocioDAO {
 
 	// Definición de consultas a la BD
 	private static String SQL_BUSCAR_TODAS = "SELECT * FROM categorias";
+	private static String SQL_BUSCAR_POR_ID = "SELECT * FROM categorias WHERE id_categoria = :id";
+	private static String SQL_INSERTAR = "INSERT INTO categorias (descripcion) VALUES (:descripcion)";
+	private static String SQL_ACTUALIZAR = "UPDATE categorias SET descripcion = :descripcion, fecha_baja = :fecha_baja WHERE id_categoria = :id";
 
 	NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
@@ -36,6 +39,34 @@ public class CategoriaSocioDAO implements ICategoriaSocioDAO {
 		return lista;
 	}
 
+	@Override
+	public CategoriaSocio getCategoriaPorId(int idCategoria) {
+		CategoriaSocio categoria = namedParameterJdbcTemplate.queryForObject(SQL_BUSCAR_POR_ID, getSqlParameterByModel(new CategoriaSocio(idCategoria)), new CategoriaMapper());
+		return categoria;
+
+	}
+	
+	
+	@Override
+	public void actualizar(CategoriaSocio cat) {
+		namedParameterJdbcTemplate.update(SQL_ACTUALIZAR, getSqlParameterByModel(cat));
+		
+	}
+	
+	@Override
+	public void agregar(CategoriaSocio cat) {
+		namedParameterJdbcTemplate.update(SQL_INSERTAR, getSqlParameterByModel(cat));
+		
+	}
+	
+	@Override
+	public void eliminar(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+	
 	private SqlParameterSource getSqlParameterByModel(CategoriaSocio categoriaSocio) {
 		MapSqlParameterSource paramSource = new MapSqlParameterSource();
 		if (categoriaSocio != null) {
@@ -58,5 +89,7 @@ public class CategoriaSocioDAO implements ICategoriaSocioDAO {
 		}
 
 	}
+
+
 
 }

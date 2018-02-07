@@ -1,6 +1,9 @@
 package com.club.controladores;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,8 +35,17 @@ public class ControladorLogin {
 			//TO DO: Mensaje de error en Login
 			
 		}
-		return "/index";
+		return "redirect:/";
 		
+	}
+	
+	
+	//TODO NO FUNCIONA
+	@RequestMapping(value ="/logout", method = RequestMethod.GET)
+	public String logout(ModelMap model, HttpServletRequest request) {
+		request.getSession().invalidate();
+		request.getSession(true);
+		return "index";
 	}
 
 }

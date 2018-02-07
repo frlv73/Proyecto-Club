@@ -34,13 +34,13 @@
 					</div>
 					<div class="input-field col s12 l4">
 						<input type="text" id="txtDireccion" name="direccion"> <label
-							for="txtDireccion">Dirección</label>
+							for="txtDireccion">DirecciÃ³n</label>
 					</div>
 				</div>
 				<div class="row">
 					<div class="input-field col s12 l4">
 						<input type="text" id="txtTelefono" name="telefono"> <label
-							for="txtTelefono">Teléfono</label>
+							for="txtTelefono">TelÃ©fono</label>
 					</div>
 				</div>
 				<div class="row">
@@ -49,7 +49,7 @@
 					</div>
 					<div class="input-field col s12 l4">
 						<input type="password" id="txtPassword" name="password"> <label
-							for="txtPassword">Contraseña</label>
+							for="txtPassword">ContraseÃ±a</label>
 					</div>
 
 				</div>
@@ -67,8 +67,12 @@
 			</fieldset>
 		</form>
 	</div>
-	<div class="row">
-		<a th:href="@{/}">Volver</a>
+		<div class="row">
+		<div class="col s12">
+			<a th:href="@{/}"
+				class="btn-floating btn-small waves-effect waves-light black"><i
+				class="material-icons">arrow_back</i></a>
+		</div>
 	</div>
 	</main>
 

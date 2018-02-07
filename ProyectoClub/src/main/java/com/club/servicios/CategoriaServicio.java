@@ -20,4 +20,27 @@ public class CategoriaServicio implements ICategoriaServicio{
 		return dao.getAllCategorias();
 	}
 
+	@Override
+	public CategoriaSocio getCategoriaPorId(int idCategoria) {
+		return dao.getCategoriaPorId(idCategoria);
+	}
+
+	@Override
+	public void actualizar(CategoriaSocio cat) {
+		dao.actualizar(cat);
+		
+	}
+
+	@Override
+	public void agregar(CategoriaSocio cat) {
+		dao.agregar(cat);
+		
+	}
+
+	@Override
+	public void eliminar(int id) {
+		dao.eliminar(id);
+		
+	}
+
 }

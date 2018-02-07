@@ -6,7 +6,7 @@
 	<header th:fragment="header">
 		<ul id="dropdown-menu" class="dropdown-content">
 			<li><a class="black-text" th:href="@{/socios}">Socios</a></li>
-			<li><a class="black-text" th:href="@{/categorias}">Categor�as</a></li>
+			<li><a class="black-text" th:href="@{/categorias}">Categorías</a></li>
 			<li><a class="black-text" th:href="@{/instalaciones}">Instalaciones</a></li>
 			<li><a class="black-text" th:href="@{/Actividades}">Actividades</a></li>
 			<li><a class="black-text" th:href="@{/reservas}">Reservas</a></li>
@@ -28,9 +28,24 @@
 					<li><a th:href="@{/registro}"
 						th:unless="${usuarioLogueado != null}">Registrarme</a></li>
 				</ul>
-				<ul class="side-nav" id="mobile">
-					<li><a href="#">Ingresar</a></li>
-					<li><a href="#">Registrarme</a></li>
+				<ul th:switch="${usuarioLogueado}" class="side-nav" id="mobile">
+					<li th:case="null"><a href="#">Ingresar</a></li>
+					<li th:case="null"><a href="#">Registrarme</a></li>
+					<li>
+						<div class="user-view">
+						
+							<h5 class="black-text center" th:text="${usuarioLogueado.nombre}" th:unless="${usuarioLogueado == null}"></h5>
+						</div>
+					</li>
+					<li class="divider"></li>
+					
+					<li><a class="black-text" th:href="@{/socios}">Socios</a></li>
+					<li><a class="black-text" th:href="@{/categorias}">Categorías</a></li>
+					<li><a class="black-text" th:href="@{/instalaciones}">Instalaciones</a></li>
+					<li><a class="black-text" th:href="@{/Actividades}">Actividades</a></li>
+					<li><a class="black-text" th:href="@{/reservas}">Reservas</a></li>
+					<li><div class="divider"></div></li>
+					<li th:case="*"><a class="black-text" th:href="@{/logout}">Salir</a></li>
 				</ul>
 			</div>
 			

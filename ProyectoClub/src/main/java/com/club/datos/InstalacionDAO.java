@@ -19,7 +19,7 @@ public class InstalacionDAO implements IInstalacionDAO {
 
 	// Definición de consultas a la BD
 	private static String SQL_BUSCAR_TODAS = "SELECT * FROM instalaciones";
-	private static String SQL_BUSCAR_POR_ID = "SELECT * FROM instalaciones WHERE id_instalaciones = :id";
+	private static String SQL_BUSCAR_POR_ID = "SELECT * FROM instalaciones WHERE id_instalacion = :id";
 	private static String SQL_INSERTAR = "INSERT INTO instalaciones (descripcion,estado) VALUES (:descripcion, :estado)";
 	private static String SQL_ACTUALIZAR = "UPDATE instalaciones SET descripcion = :descripcion, estado = :estado, fecha_baja = :fecha_baja WHERE id_instalacion = :id";
 
