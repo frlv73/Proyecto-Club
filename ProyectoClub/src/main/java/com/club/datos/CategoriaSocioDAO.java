@@ -21,7 +21,7 @@ public class CategoriaSocioDAO implements ICategoriaSocioDAO {
 	private static String SQL_BUSCAR_TODAS = "SELECT * FROM categorias";
 	private static String SQL_BUSCAR_POR_ID = "SELECT * FROM categorias WHERE id_categoria = :id";
 	private static String SQL_INSERTAR = "INSERT INTO categorias (descripcion) VALUES (:descripcion)";
-	private static String SQL_ACTUALIZAR = "UPDATE categorias SET descripcion = :descripcion, fecha_baja = :fecha_baja WHERE id_categoria = :id";
+	private static String SQL_ACTUALIZAR = "UPDATE categorias SET descripcion = :descripcion WHERE id_categoria = :id";
 
 	NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
@@ -72,7 +72,7 @@ public class CategoriaSocioDAO implements ICategoriaSocioDAO {
 		if (categoriaSocio != null) {
 			paramSource.addValue("id", categoriaSocio.getId());
 			paramSource.addValue("descripcion", categoriaSocio.getDescripcion());
-			paramSource.addValue("fecha_baja", categoriaSocio.getFechaBaja());
+			
 		}
 		return paramSource;
 	}
@@ -84,7 +84,7 @@ public class CategoriaSocioDAO implements ICategoriaSocioDAO {
 			CategoriaSocio cat = new CategoriaSocio();
 			cat.setId(rs.getInt("id_categoria"));
 			cat.setDescripcion(rs.getString("descripcion"));
-			cat.setFechaBaja(rs.getDate("fecha_baja"));
+			
 			return cat;
 		}
 

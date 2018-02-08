@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.club.entidades.CategoriaSocio;
@@ -39,28 +40,41 @@ public class ControladorCategoria {
 		categoria= new CategoriaSocio();
 		model.addAttribute("categoria", categoria);
 		model.put("titulo", "Nueva Categoría");
+		model.put("modo", "add");
 		return "categorias/form";
 	}
 	
 	//Editar Categoria
 	@RequestMapping(value = "/editar/{id}", method = RequestMethod.GET)
-	public String editar(@PathVariable("id") int idCategoria, Model model) {
+	public String editar(@PathVariable("id") int idCategoria, ModelMap model) {
 		categoria = servicio.getCategoriaPorId(idCategoria);
 		model.addAttribute("categoria", categoria);
 		model.addAttribute("titulo", "Modificar Instalación");
+		model.put("modo", "edit");
 		return "categorias/form";
 	}
 	
 	// Procesa el form de agregar y editar. Revisar que funcione el ModelAttribute
 	@RequestMapping(value = "/guardar", method = RequestMethod.POST)
-	public String guardar(@ModelAttribute("categoria") CategoriaSocio cat, ModelMap model) {
-		if (null != cat && 0 != cat.getId()) {
-			servicio.actualizar(cat);
+	public String guardar(@RequestParam(value = "id", required = false) Integer id,
+			@RequestParam("descripcion") String desc, ModelMap model) {
+		
+		// Si estamos agregando, no enviamos el id porque se autogenera en la BD. Por lo
+		// tanto, lo inicializamos con 0, un valor que ninguna categoría de la BD
+		// tendrá.
+		if (null == id) {
+			id = 0;
+		}
+		
+		categoria = new CategoriaSocio(id, desc);
+		
+		if (0 != categoria.getId()) {
+			servicio.actualizar(categoria);
 		} else {
-			servicio.agregar(cat);
+			servicio.agregar(categoria);
 		}
 
-		return "categorias/lista";
+		return "redirect:/categorias";
 	}
 
 	//Eliminar la categoría

@@ -16,9 +16,9 @@
 			<fieldset>
 				<legend>Datos Categoría de Socio</legend>
 				<div class="row">
-					<div class="input-field col s6 l1">
-						<input th:value="${categoria.id != 0} ? ${categoria.id}"
-							id="id" name="id" type="text" disabled> <label for="txtId">ID</label>
+					<div class="input-field col s6 l1" th:switch="${modo}">
+						<input th:case="edit" th:value="${categoria.id}"
+							id="id" name="id" type="text" disabled> <label th:case="edit" for="txtId">ID</label>
 					</div>
 				</div>
 				<div class="row">
@@ -31,7 +31,7 @@
 
 				<div class="row">
 					<input type="submit" class="btn waves-effect waves-light black"
-						th:value="${categoria.id != 0} ? 'Actualizar' : 'Agregar'">
+						th:value="${modo == 'edit'} ? 'Actualizar' : 'Agregar'">
 				</div>
 			</fieldset>
 		</form>

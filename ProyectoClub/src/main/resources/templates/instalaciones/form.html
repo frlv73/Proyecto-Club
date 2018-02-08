@@ -16,9 +16,9 @@
 			<fieldset>
 				<legend>Datos Instalación</legend>
 				<div class="row">
-					<div class="input-field col s6 l1">
-						<input th:value="${instalacion.id != 0} ? ${instalacion.id}" name="id"
-							id="id" type="text" disabled> <label for="id">ID</label>
+					<div class="input-field col s6 l1" th:switch="${modo}">
+						<input th:case="edit" th:value="${instalacion.id}" name="id"
+							id="id" type="text" readonly> <label th:case="edit" for="id">ID</label>
 					</div>
 				</div>
 				<div class="row">
@@ -29,15 +29,15 @@
 					<div class="input-field col s6 l2">
 						<select id="cbxEstado" name="estado">
 							<option value="" disabled selected>Estado</option>
-							<option value="0">Deshabilitada</option>
-							<option value="1">Habilitada</option>
+							<option value="Deshabilitada">Deshabilitada</option>
+							<option value="Habilitada">Habilitada</option>
 						</select> <label for="estado">Estado</label>
 					</div>
 				</div>
 
 				<div class="row">
 					<input type="submit" class="btn waves-effect waves-light black"
-						th:value="${instalacion.id != 0} ? 'Actualizar' : 'Agregar'">
+						th:value="${modo == 'edit'} ? 'Actualizar' : 'Agregar'">
 				</div>
 			</fieldset>
 		</form>

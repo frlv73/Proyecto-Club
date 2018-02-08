@@ -6,7 +6,6 @@ import java.util.Date;
 public class CategoriaSocio { 
 	private int id;
 	private String descripcion;
-	private Date fechaBaja;
 	private ArrayList<DescuentoCategoriaSocio> descuentos;
 
 	public CategoriaSocio(int id) {
@@ -14,6 +13,13 @@ public class CategoriaSocio {
 		this.setId(id);
 	}
 	
+	
+	public CategoriaSocio(int id, String descripcion) {
+		super();
+		this.id = id;
+		this.descripcion = descripcion;
+	}
+
 	public CategoriaSocio() {
 		super();
 	}
@@ -34,13 +40,6 @@ public class CategoriaSocio {
 		this.descripcion = descripcion;
 	}
 
-	public Date getFechaBaja() {
-		return fechaBaja;
-	}
-
-	public void setFechaBaja(Date fechaBaja) {
-		this.fechaBaja = fechaBaja;
-	}
 
 	public ArrayList<DescuentoCategoriaSocio> getDescuentos() {
 		return descuentos;
