@@ -84,7 +84,7 @@ public class InstalacionDAO implements IInstalacionDAO {
 		@Override
 		public Instalacion mapRow(ResultSet rs, int numFilas) throws SQLException {
 			Instalacion ins = new Instalacion();
-			ins.setId(rs.getInt("id_instalacion"));
+			ins.setId(rs.getInt("id_instalaciones"));
 			ins.setDescripcion(rs.getString("descripcion"));
 			//ins.setFechaBaja(rs.getDate("fecha_baja"));
 			ins.setEstado(rs.getString("estado"));

@@ -33,6 +33,8 @@
 				<td th:text="${soc.dni}"></td>
 				<td th:text="${soc.nombre}"></td>
 				<td th:text="${soc.apellido}"></td>
+				<td><a th:href="@{'/instalaciones/editar/' + ${soc.id}}" class="btn-floating btn-small waves-effect waves-light black"><i class="material-icons">edit</i></a> <a
+					th:href="@{'/instalaciones/eliminar/' + ${soc.id}}" class="btn-floating btn-small waves-effect waves-light black"><i class="material-icons">delete</i></a></td>
 				
 			</tr>
 		</tbody>

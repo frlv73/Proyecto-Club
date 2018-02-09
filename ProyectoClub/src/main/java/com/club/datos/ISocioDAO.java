@@ -2,6 +2,7 @@ package com.club.datos;
 
 import java.util.List;
 
+import com.club.entidades.Instalacion;
 import com.club.entidades.Socio;
 
 public interface ISocioDAO {
@@ -10,6 +11,14 @@ public interface ISocioDAO {
 
 	void registrar(Socio socio);
 
-	List<Socio> getAllSocios();
+	public List<Socio> getAllSocios();
+	public Socio getSocioPorId(int id);
+
+	public void actualizar(Socio soc);
+
+	public void agregar(Socio soc);
+
+	public void eliminar(int id);
+
 
 }

@@ -19,10 +19,15 @@ import com.club.entidades.Socio;
 public class SocioDAO implements ISocioDAO {
 
 	private static String SQL_BUSCAR_TODOS = "Select * from Socios";
+	private static String SQL_BUSCAR_POR_ID = "SELECT * FROM Socios WHERE id_socio = :id";
 	private static String SQL_LOGIN = "SELECT * FROM socios WHERE mail= :email AND password= :password";
 	private static String SQL_INSERTAR = "INSERT INTO socios (dni, nombre, apellido, localidad, direccion, telefono, "
 			                           + "mail, password, estado, id_categoria_socio) VALUES (:dni, :nombre, :apellido, :localidad, :direccion,"
 			                           + ":telefono, :email, :password, :estado, :id_categoria)";
+	private static String SQL_ACTUALIZAR = "UPDATE socios SET dni = :dni, nombre = :nombre, apellido = :apellido, direccion = :direccion, telefono = :telefono, estado = :estado,"
+									+ ", id_categoria_socio = :id_cat_soc WHERE id_socio = :id";
+
+	
 
 	NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
@@ -93,6 +98,32 @@ public class SocioDAO implements ISocioDAO {
 				new SocioMapper());
 		return lista;
 		
+	}
+
+	
+	@Override
+	public void actualizar(Socio soc) {
+		namedParameterJdbcTemplate.update(SQL_ACTUALIZAR, getSqlParameterByModel(soc));
+
+	}
+
+	@Override
+	public void agregar(Socio soc) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void eliminar(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Socio getSocioPorId(int id) {
+		Socio socio = namedParameterJdbcTemplate.queryForObject(SQL_BUSCAR_POR_ID,
+				getSqlParameterByModel(new Socio(id)), new SocioMapper());
+		return socio;
 	}
 
 }

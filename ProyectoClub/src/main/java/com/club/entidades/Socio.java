@@ -27,6 +27,10 @@ public class Socio {
 		super();
 	}
 
+	public Socio(int idSocio) {
+		super();
+		this.setId(idSocio);
+	}
 	public int getId() {
 		return id;
 	}
