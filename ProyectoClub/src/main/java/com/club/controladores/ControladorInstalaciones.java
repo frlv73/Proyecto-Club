@@ -1,5 +1,7 @@
 package com.club.controladores;
 
+import static org.mockito.Matchers.isNull;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.club.entidades.Instalacion;
@@ -39,6 +42,7 @@ public class ControladorInstalaciones {
 		instalacion = new Instalacion();
 		model.put("instalacion", instalacion);
 		model.put("titulo", "Nueva Instalación");
+		model.put("modo", "add");
 		return "instalaciones/form";
 	}
 
@@ -49,19 +53,38 @@ public class ControladorInstalaciones {
 		instalacion = servicio.getInstalacionPorId(idInstalacion);
 		model.put("instalacion", instalacion);
 		model.put("titulo", "Modificar Instalación");
+		model.put("modo", "edit");
 		return "instalaciones/form";
 	}
 
-	// Procesa el form de agregar y editar. Revisar que funcione el ModelAttribute
+	// Procesa el form de agregar y editar.
+	/*
+	 * No me funciona con el ModelAttribute. Revisar.
+	 * 
+	 * @RequestMapping(value = "/guardar", method = RequestMethod.POST) public
+	 * String guardar(@ModelAttribute("instalacion") Instalacion ins, ModelMap
+	 * model)
+	 */
 	@RequestMapping(value = "/guardar", method = RequestMethod.POST)
-	public String guardar(@ModelAttribute("form") Instalacion ins, ModelMap model) {
-		if (null != ins && 0 != ins.getId()) {
-			servicio.actualizar(ins);
-		} else {
-			servicio.agregar(ins);
+	public String guardar(@RequestParam(value = "id", required = false) Integer id,
+			@RequestParam("descripcion") String desc, @RequestParam("estado") String estado, ModelMap model) {
+
+		// Si estamos agregando, no enviamos el id porque se autogenera en la BD. Por lo
+		// tanto, lo inicializamos con 0, un valor que ninguna instalacion de la BD
+		// tendrá.
+		if (null == id) {
+			id = 0;
 		}
 
-		return "instalaciones/lista";
+		instalacion = new Instalacion(id, desc, estado);
+
+		if (0 != instalacion.getId()) {
+			servicio.actualizar(instalacion);
+		} else {
+			servicio.agregar(instalacion);
+		}
+
+		return "redirect:/instalaciones";
 	}
 
 	@RequestMapping(value = "/eliminar/{id}", method = RequestMethod.GET)

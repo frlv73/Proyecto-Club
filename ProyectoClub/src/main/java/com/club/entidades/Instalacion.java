@@ -10,7 +10,6 @@ public class Instalacion {
 	private int id;
 	private String descripcion;
 	private String estado;
-	private Date fechaBaja;
 	private ArrayList<Adicional> adicionales;
 	
 	public Instalacion() {
@@ -22,13 +21,11 @@ public class Instalacion {
 		this.setId(idInstalacion);
 	}
 
-	public Instalacion(int id, String descripcion, String estado, Date fecha_baja, ArrayList<Adicional> adicionales) {
+	public Instalacion(int id, String descripcion, String estado) {
 		super();
 		this.id = id;
 		this.descripcion = descripcion;
 		this.estado = estado;
-		this.fechaBaja = fecha_baja;
-		this.adicionales = adicionales;
 	}
 
 	public int getId() {
@@ -55,13 +52,6 @@ public class Instalacion {
 		this.estado = estado;
 	}
 
-	public Date getFechaBaja() {
-		return fechaBaja;
-	}
-
-	public void setFechaBaja(Date fechaBaja) {
-		this.fechaBaja = fechaBaja;
-	}
 
 	public ArrayList<Adicional> getAdicionales() {
 		return adicionales;

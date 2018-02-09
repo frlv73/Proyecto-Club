@@ -21,7 +21,7 @@ public class InstalacionDAO implements IInstalacionDAO {
 	private static String SQL_BUSCAR_TODAS = "SELECT * FROM instalaciones";
 	private static String SQL_BUSCAR_POR_ID = "SELECT * FROM instalaciones WHERE id_instalaciones = :id";
 	private static String SQL_INSERTAR = "INSERT INTO instalaciones (descripcion,estado) VALUES (:descripcion, :estado)";
-	private static String SQL_ACTUALIZAR = "UPDATE instalaciones SET descripcion = :descripcion, estado = :estado, fecha_baja = :fecha_baja WHERE id_instalacion = :id";
+	private static String SQL_ACTUALIZAR = "UPDATE instalaciones SET descripcion = :descripcion, estado = :estado WHERE id_instalaciones = :id";
 
 	/*
 	 * set fecha_baja today() private static String SQL_ELIMINAR =

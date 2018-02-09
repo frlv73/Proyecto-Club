@@ -9,7 +9,9 @@
 			<li><a class="black-text" th:href="@{/categorias}">Categorías</a></li>
 			<li><a class="black-text" th:href="@{/instalaciones}">Instalaciones</a></li>
 			<li><a class="black-text" th:href="@{/Actividades}">Actividades</a></li>
-			<li><a class="black-text"th:href="@{/reservas}">Reservas</a></li>
+			<li><a class="black-text" th:href="@{/reservas}">Reservas</a></li>
+			<li class="divider"></li>
+			<li><a class="black-text" th:href="@{/logout}">Salir</a></li>
 		</ul>
 		<nav class="nav-extended">
 			<div class="nav-wrapper black" th:fragment="navSuperior">
@@ -20,16 +22,33 @@
 
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
 					<li th:switch="${usuarioLogueado}"><a th:case="null"
-						th:href="@{/login}">Ingresar</a> <a th:case="*"
-						 href="#!"
-						
-						class="dropdown-button" data-beloworigin="true" data-activates="dropdown-menu"><span th:text="${usuarioLogueado.nombre}"></span><i class="material-icons right">arrow_drop_down</i></a></li>
+						th:href="@{/login}">Ingresar</a> <a th:case="*" href="#!"
+						class="dropdown-button" data-beloworigin="true"
+						data-activates="dropdown-menu"><span
+							th:text="${usuarioLogueado.nombre}"></span><i
+							class="material-icons right">arrow_drop_down</i></a></li>
 					<li><a th:href="@{/registro}"
 						th:unless="${usuarioLogueado != null}">Registrarme</a></li>
 				</ul>
-				<ul class="side-nav" id="mobile">
-					<li><a href="#">Ingresar</a></li>
-					<li><a href="#">Registrarme</a></li>
+				<ul th:switch="${usuarioLogueado}" class="side-nav" id="mobile">
+					<li th:case="null"><a href="#">Ingresar</a></li>
+					<li th:case="null"><a href="#">Registrarme</a></li>
+					<li>
+						<div class="user-view">
+
+							<h5 class="black-text center" th:text="${usuarioLogueado.nombre}"
+								th:unless="${usuarioLogueado == null}"></h5>
+						</div>
+					</li>
+					<li class="divider"></li>
+
+					<li><a class="black-text" th:href="@{/socios}">Socios</a></li>
+					<li><a class="black-text" th:href="@{/categorias}">Categorías</a></li>
+					<li><a class="black-text" th:href="@{/instalaciones}">Instalaciones</a></li>
+					<li><a class="black-text" th:href="@{/Actividades}">Actividades</a></li>
+					<li><a class="black-text" th:href="@{/reservas}">Reservas</a></li>
+					<li><div class="divider"></div></li>
+					<li th:case="*"><a class="black-text" th:href="@{/logout}">Salir</a></li>
 				</ul>
 			</div>
 

@@ -12,27 +12,21 @@
 	<!--/*/ <th:block th:insert="fragments/headerAdmin :: header"></th:block>  /*/-->
 	<main>
 	<div class="row">
-		<form class="col s12" method="POST" action="/instalaciones/guardar" modelAttribute="instalacion">
+		<form class="col s12" method="POST" action="/categorias/guardar" modelAttribute="categoria">
 			<fieldset>
-				<legend>Datos Instalación</legend>
+				<legend>Datos Categoría de Socio</legend>
 				<div class="row">
 					<div class="input-field col s6 l1" th:switch="${modo}">
-						<input th:case="edit" th:value="${instalacion.id}" name="id"
-							id="id" type="text" readonly> <label th:case="edit" for="id">ID</label>
+						<input th:case="edit" th:value="${categoria.id}"
+							id="id" name="id" type="text" disabled> <label th:case="edit" for="txtId">ID</label>
 					</div>
 				</div>
 				<div class="row">
 					<div class="input-field col s12 l4">
-						<input th:value="${instalacion.descripcion}" id="txtdescripcion" name="descripcion"
+						<input th:value="${categoria.descripcion}" id="descripcion" name="descripcion"
 							type="text"> <label for="descripcion">Descripción</label>
 					</div>
-					<div class="input-field col s6 l2">
-						<select id="cbxEstado" name="estado">
-							<option value="" disabled selected>Estado</option>
-							<option value="Deshabilitada">Deshabilitada</option>
-							<option value="Habilitada">Habilitada</option>
-						</select> <label for="estado">Estado</label>
-					</div>
+
 				</div>
 
 				<div class="row">
@@ -42,10 +36,9 @@
 			</fieldset>
 		</form>
 	</div>
-
-	<div class="row">
+		<div class="row">
 		<div class="col s12">
-			<a th:href="@{/instalaciones}"
+			<a th:href="@{/categorias}"
 				class="btn-floating btn-small waves-effect waves-light black"><i
 				class="material-icons">arrow_back</i></a>
 		</div>

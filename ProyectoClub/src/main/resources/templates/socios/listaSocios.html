@@ -33,14 +33,20 @@
 				<td th:text="${soc.dni}"></td>
 				<td th:text="${soc.nombre}"></td>
 				<td th:text="${soc.apellido}"></td>
-				<td><a th:href="@{'/instalaciones/editar/' + ${soc.id}}" class="btn-floating btn-small waves-effect waves-light black"><i class="material-icons">edit</i></a> <a
-					th:href="@{'/instalaciones/eliminar/' + ${soc.id}}" class="btn-floating btn-small waves-effect waves-light black"><i class="material-icons">delete</i></a></td>
+				<td><a th:href="@{'/socios/editar/' + ${soc.id}}" class="btn-floating btn-small waves-effect waves-light black"><i class="material-icons">edit</i></a> <a
+					th:href="@{'/socios/eliminar/' + ${soc.id}}" class="btn-floating btn-small waves-effect waves-light black"><i class="material-icons">delete</i></a></td>
 				
 			</tr>
 		</tbody>
 	</table>
 	</div>
 	</div>
+	<div class="row">
+		<div class="col s12">
+			<a th:href="@{/}"
+				class="btn-floating btn-small waves-effect waves-light black"><i
+				class="material-icons">arrow_back</i></a>
+		</div>
 
 	</main>
 
