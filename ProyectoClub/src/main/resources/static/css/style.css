@@ -18,6 +18,14 @@ legend {
 	color: #a6a6a6;
 }
 
+blockquote{
+  margin: 20px 10px;
+  padding-left: 1.5rem;
+  border-left: 3px solid black;
+  
+  
+}
+
 
 .nav-extended .nav-wrapper .brand-logo img {
 	margin-left: 10px;
@@ -46,3 +54,4 @@ legend {
 	padding: 0 1rem;
 	color: black;
 }
+
