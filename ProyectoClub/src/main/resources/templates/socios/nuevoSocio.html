@@ -2,14 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <!--/*/ <th:block th:include="fragments/head :: head"></th:block>  /*/-->
+<script type="text/javascript">
+$(document).ready(function() {
+    $('select').material_select();
+</script>
 </head>
+
 <body>
 	<!--/*/ <th:block th:insert="fragments/header :: header"></th:block>  /*/-->
 
 	<main>
 <h4 class="center">Registro</h4>
 	<div class="row">
-		<form class="col s12" method="POST" action="/registrar" modelAttribute="formSocio">
+		<form class="col s12" method="POST" action="/agregar" modelAttribute="formSocio">
 			<fieldset>
 				<legend>Datos Socio</legend>
 				<div class="row">
@@ -42,6 +47,14 @@
 						<input type="text" id="txtTelefono" name="telefono"> <label
 							for="txtTelefono">Teléfono</label>
 					</div>
+					<div class="input-field col s12 l4">
+					<select id="cbxCategorias" name="cbxCategorias">
+						<option value="" disabled selected>Categoria</option>
+						<option th:each="cat : ${listaCategorias}" th:value="${cat.id}"
+							th:text="${cat.descripcion}" />
+
+					</select> <label>Seleccionar Categoria</label>
+				</div>
 				</div>
 				<div class="row">
 					<div class="input-field col s12 l4">
@@ -54,14 +67,9 @@
 
 				</div>
 
-				<div class="row">
-					<div class="input-field col s12 center hide-on-large-only">
+				<div class="input-field col l4 hide-on-med-and-down">
 						<input type="submit" class="btn waves-effect waves-light black"
-							value="Registrarme">
-					</div>
-					<div class="input-field col l4 hide-on-med-and-down">
-						<input type="submit" class="btn waves-effect waves-light black"
-							value="Registrarme">
+							value="Guardar">
 					</div>
 				</div>
 			</fieldset>

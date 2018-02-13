@@ -35,4 +35,22 @@ public class SocioServicio implements ISocioServicio{
 		return dao.getAllSocios();
 	}
 
+	@Override
+	public void actualizar(Socio socio) {
+		dao.actualizar(socio);
+		
+	}
+
+	@Override
+	public void agregar(Socio socio) {
+		dao.agregar(socio);
+		
+	}
+
+	@Override
+	public void eliminar(int id) {
+		dao.eliminar(id);
+		
+	}
+
 }
