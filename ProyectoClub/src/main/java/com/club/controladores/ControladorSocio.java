@@ -43,7 +43,7 @@ public class ControladorSocio {
 		model.put("socio", socio);
 		model.put("titulo", "Nuevo Socio");
 		model.put("modo", "add");
-		return "socios/nuevoSocio";
+		return "socios/formSocio";
 	}
 
 	@RequestMapping(value = "/eliminar/{id}", method = RequestMethod.GET)
@@ -51,6 +51,15 @@ public class ControladorSocio {
 
 		servicio.eliminar(id);
 		return "socios/listaSocios";
+	}
+	
+	@RequestMapping(value = "/editar/{id}", method = RequestMethod.GET)
+	public String editar(@PathVariable("id") int idSocio, ModelMap model) {
+		socio = servicio.getSocioPorId(idSocio);
+		model.put("socio", socio);
+		model.put("titulo", "Modificar Socio");
+		model.put("modo", "edit");
+		return "socios/formSocio";
 	}
 
 }

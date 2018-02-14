@@ -55,7 +55,7 @@ public class SocioDAO implements ISocioDAO {
 	private SqlParameterSource getSqlParameterByModel(Socio socio) {
 		MapSqlParameterSource paramSource = new MapSqlParameterSource();
 		if (socio != null) {
-			paramSource.addValue("id_socio", socio.getId());
+			paramSource.addValue("id", socio.getId());
 			paramSource.addValue("dni", socio.getDni());
 			paramSource.addValue("nombre", socio.getNombre());
 			paramSource.addValue("apellido", socio.getApellido());
@@ -120,9 +120,9 @@ public class SocioDAO implements ISocioDAO {
 	}
 
 	@Override
-	public Socio getSocioPorId(int id) {
+	public Socio getSocioPorId(int idSocio) {
 		Socio socio = namedParameterJdbcTemplate.queryForObject(SQL_BUSCAR_POR_ID,
-				getSqlParameterByModel(new Socio(id)), new SocioMapper());
+				getSqlParameterByModel(new Socio(idSocio)), new SocioMapper());
 		return socio;
 	}
 

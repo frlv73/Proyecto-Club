@@ -53,4 +53,10 @@ public class SocioServicio implements ISocioServicio{
 		
 	}
 
+	@Override
+	public Socio getSocioPorId(int idSocio) {
+		// TODO Auto-generated method stub
+		return dao.getSocioPorId(idSocio);
+	}
+
 }

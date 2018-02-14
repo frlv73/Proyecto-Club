@@ -12,39 +12,45 @@ $(document).ready(function() {
 	<!--/*/ <th:block th:insert="fragments/header :: header"></th:block>  /*/-->
 
 	<main>
-<h4 class="center">Registro</h4>
 	<div class="row">
 		<form class="col s12" method="POST" action="/agregar" modelAttribute="formSocio">
 			<fieldset>
 				<legend>Datos Socio</legend>
 				<div class="row">
+					<div class="input-field col s4 l2" th:switch="${modo}">
+					
+					<input th:case="edit" th:value="${socio.id}" name="id"
+							id="id" type="text" readonly> <label th:case="edit" for="id">ID</label>
+					</div>
+				</div>
+				<div class="row">
 					<div class="input-field col s4 l2">
-						<input type="text" id="txtDNI" name="dni"> <label for="txtDNI">DNI</label>
+						<input th:value="${socio.dni}" type="text" id="txtDNI" name="dni"> <label for="txtDNI">DNI</label>
 					</div>
 				</div>
 				<div class="row">
 					<div class="input-field col s12 l4">
-						<input type="text" id="txtNombre" name="nombre"> <label for="txtNombre">Nombre</label>
+						<input th:value="${socio.nombre}" type="text" id="txtNombre" name="nombre"> <label for="txtNombre">Nombre</label>
 					</div>
 					<div class="input-field col s12 l4">
-						<input type="text" id="txtApellido" name="apellido"> <label
+						<input  th:value="${socio.apellido}" type="text" id="txtApellido" name="apellido"> <label
 							for="txtApellido">Apellido</label>
 					</div>
 
 				</div>
 				<div class="row">
 					<div class="input-field col s12 l4">
-						<input type="text" id="txtLocalidad" name="localidad"> <label
+						<input th:value="${socio.localidad}" type="text" id="txtLocalidad" name="localidad"> <label
 							for="txtLocalidad">Localidad</label>
 					</div>
 					<div class="input-field col s12 l4">
-						<input type="text" id="txtDireccion" name="direccion"> <label
+						<input th:value="${socio.direccion}" type="text" id="txtDireccion" name="direccion"> <label
 							for="txtDireccion">Dirección</label>
 					</div>
 				</div>
 				<div class="row">
 					<div class="input-field col s12 l4">
-						<input type="text" id="txtTelefono" name="telefono"> <label
+						<input th:value="${socio.telefono}" type="text" id="txtTelefono" name="telefono"> <label
 							for="txtTelefono">Teléfono</label>
 					</div>
 					<div class="input-field col s12 l4">
@@ -58,10 +64,10 @@ $(document).ready(function() {
 				</div>
 				<div class="row">
 					<div class="input-field col s12 l4">
-						<input type="text" id="txtEmail" name="email"> <label for="txtEmail">Email</label>
+						<input th:value="${socio.email}" type="text" id="txtEmail" name="email"> <label for="txtEmail">Email</label>
 					</div>
 					<div class="input-field col s12 l4">
-						<input type="password" id="txtPassword" name="password"> <label
+						<input th:value="${socio.password}" type="password" id="txtPassword" name="password"> <label
 							for="txtPassword">Contraseña</label>
 					</div>
 

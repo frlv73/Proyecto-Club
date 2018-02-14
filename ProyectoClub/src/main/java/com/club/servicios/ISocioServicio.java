@@ -8,6 +8,8 @@ import com.club.entidades.Socio;
 public interface ISocioServicio {
 
 	boolean estaHabilitado(int id);
+	
+	public Socio getSocioPorId(int idSocio);
 
 	void registrar(Socio socio);
 
