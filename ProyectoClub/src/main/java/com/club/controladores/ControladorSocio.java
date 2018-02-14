@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.club.entidades.Instalacion;
 import com.club.entidades.Socio;
+import com.club.servicios.ICategoriaServicio;
 import com.club.servicios.ISocioServicio;
 
 @Controller
@@ -19,6 +20,11 @@ public class ControladorSocio {
 
 	 @Autowired
 	private ISocioServicio servicio;
+<<<<<<< HEAD
+=======
+	 @Autowired
+	private ICategoriaServicio servCat;
+>>>>>>> refs/remotes/origin/ABM_Instalaciones_Socios
 	private Socio socio;
 	 
 	 @RequestMapping(method = RequestMethod.GET)
@@ -58,6 +64,10 @@ public class ControladorSocio {
 		socio = servicio.getSocioPorId(idSocio);
 		model.put("socio", socio);
 		model.put("titulo", "Modificar Socio");
+<<<<<<< HEAD
+=======
+		model.put("listaCategorias", servCat.getAllCategorias());
+>>>>>>> refs/remotes/origin/ABM_Instalaciones_Socios
 		model.put("modo", "edit");
 		return "socios/formSocio";
 	}

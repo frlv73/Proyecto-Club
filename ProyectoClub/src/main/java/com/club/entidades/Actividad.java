@@ -42,14 +42,20 @@ public void setCosto(double costo) {
 	this.costo = costo;
 }
 
-public Actividad(String desc,String est, double costo, ArrayList<HorariosActividades> h){
+public Actividad(int id, String desc,String est, double costo){
+	this.setId_actividad(id);
 	this.setDescripcion(desc);
 	this.setEstado(est);
-	this.setCosto(costo);
-	this.setHorarios(h);                                                                                                                                            
+	this.setCosto(costo);                                                                                                               
 }
 
 public Actividad(){}
+
+
+public Actividad(int id_actividad) {
+	super();
+	this.id_actividad = id_actividad;
+}
 
 
 }

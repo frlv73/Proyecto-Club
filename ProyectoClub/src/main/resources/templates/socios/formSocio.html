@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <!--/*/ <th:block th:include="fragments/head :: head"></th:block>  /*/-->
+<<<<<<< HEAD
 <script type="text/javascript">
 $(document).ready(function() {
     $('select').material_select();
@@ -56,6 +57,59 @@ $(document).ready(function() {
 					<div class="input-field col s12 l4">
 					<select id="cbxCategorias" name="cbxCategorias">
 						<option value="" disabled selected>Categoria</option>
+=======
+</head>
+
+<body>
+	<!--/*/ <th:block th:insert="fragments/header :: header"></th:block>  /*/-->
+
+	<main>
+	<div class="row">
+		<form class="col s12" method="POST" action="/agregar" modelAttribute="formSocio">
+			<fieldset>
+				<legend>Datos Socio</legend>
+				<div class="row">
+					<div class="input-field col s4 l2" th:switch="${modo}">
+					
+					<input th:case="edit" th:value="${socio.id}" name="id"
+							id="id" type="text" readonly> <label th:case="edit" for="id">ID</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s4 l2">
+						<input th:value="${socio.dni}" type="text" id="txtDNI" name="dni"> <label for="txtDNI">DNI</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12 l4">
+						<input th:value="${socio.nombre}" type="text" id="txtNombre" name="nombre"> <label for="txtNombre">Nombre</label>
+					</div>
+					<div class="input-field col s12 l4">
+						<input  th:value="${socio.apellido}" type="text" id="txtApellido" name="apellido"> <label
+							for="txtApellido">Apellido</label>
+					</div>
+
+				</div>
+				<div class="row">
+					<div class="input-field col s12 l4">
+						<input th:value="${socio.localidad}" type="text" id="txtLocalidad" name="localidad"> <label
+							for="txtLocalidad">Localidad</label>
+					</div>
+					<div class="input-field col s12 l4">
+						<input th:value="${socio.direccion}" type="text" id="txtDireccion" name="direccion"> <label
+							for="txtDireccion">Dirección</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12 l4">
+						<input th:value="${socio.telefono}" type="text" id="txtTelefono" name="telefono"> <label
+							for="txtTelefono">Teléfono</label>
+					</div>
+					<div class="input-field col s12 l4">
+					<select id="cbxCategorias" name="cbxCategorias" data-beloworigin="true">
+						<option value="" disabled selected>Categoria</option>
+						
+>>>>>>> refs/remotes/origin/ABM_Instalaciones_Socios
 						<option th:each="cat : ${listaCategorias}" th:value="${cat.id}"
 							th:text="${cat.descripcion}" />
 
