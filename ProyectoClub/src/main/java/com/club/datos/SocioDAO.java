@@ -24,8 +24,9 @@ public class SocioDAO implements ISocioDAO {
 	private static String SQL_INSERTAR = "INSERT INTO socios (dni, nombre, apellido, localidad, direccion, telefono, "
 			                           + "mail, password, estado, id_categoria_socio) VALUES (:dni, :nombre, :apellido, :localidad, :direccion,"
 			                           + ":telefono, :email, :password, :estado, :id_categoria)";
-	private static String SQL_ACTUALIZAR = "UPDATE socios SET dni = :dni, nombre = :nombre, apellido = :apellido, direccion = :direccion, telefono = :telefono, estado = :estado,"
-									+ ", id_categoria_socio = :id_cat_soc WHERE id_socio = :id";
+	private static String SQL_ACTUALIZAR = "UPDATE socios SET dni = :dni, nombre = :nombre, apellido = :apellido, direccion = :direccion, localidad = :localidad, "
+			+ "	telefono = :telefono, estado = :estado,"
+			+ ", id_categoria_socio = :id_cat_soc WHERE id_socio = :id";
 
 	
 
@@ -84,6 +85,7 @@ public class SocioDAO implements ISocioDAO {
 			socio.setApellido(rs.getString("apellido"));
 			socio.setEmail(rs.getString("mail"));
 			socio.setDireccion(rs.getString("direccion"));
+			socio.setLocalidad(rs.getString("localidad"));
 			socio.setTelefono(rs.getString("telefono"));
 			socio.setEstado(rs.getString("estado"));
 			socio.getCategoriaSocio().setId(rs.getInt("id_categoria_socio"));

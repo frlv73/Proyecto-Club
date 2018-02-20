@@ -21,8 +21,8 @@ public class ActividadDAO implements IActividadDAO{
 	// Definición de consultas a la BD
 	private static String SQL_BUSCAR_TODAS = "SELECT * FROM actividades";
 	private static String SQL_BUSCAR_POR_ID = "SELECT * FROM actividades WHERE id_actividad = :id";
-	private static String SQL_INSERTAR = "INSERT INTO categorias (descripcion, costo) VALUES (:descripcion, :costo)";
-	private static String SQL_ACTUALIZAR = "UPDATE actividades SET descripcion = :descripcion, costo = :costo, estado = :estado WHERE id_actividad = :id";
+	private static String SQL_INSERTAR = "INSERT INTO actividades (descripción, costo) VALUES (:descripción, :costo)";
+	private static String SQL_ACTUALIZAR = "UPDATE actividades SET descripción = :descripción, costo = :costo, estado = :estado WHERE id_actividad = :id";
 
 	NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
@@ -64,7 +64,7 @@ public class ActividadDAO implements IActividadDAO{
 		MapSqlParameterSource paramSource = new MapSqlParameterSource();
 		if (actividad != null) {
 			paramSource.addValue("id", actividad.getId_actividad());
-			paramSource.addValue("descripcion", actividad.getDescripcion());
+			paramSource.addValue("descripción", actividad.getDescripcion());
 			paramSource.addValue("costo", actividad.getCosto());
 			paramSource.addValue("estado", actividad.getEstado());
 			
@@ -78,7 +78,7 @@ public class ActividadDAO implements IActividadDAO{
 		public Actividad mapRow(ResultSet rs, int numFilas) throws SQLException {
 			Actividad act = new Actividad();
 			act.setId_actividad(rs.getInt("id_actividad"));
-			act.setDescripcion(rs.getString("descripcion"));
+			act.setDescripcion(rs.getString("descripción"));
 			act.setCosto(rs.getDouble("costo"));
 			act.setEstado(rs.getString("estado"));
 			

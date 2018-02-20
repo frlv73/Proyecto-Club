@@ -48,7 +48,7 @@ public class ControladorActividades {
 		public String editar(@PathVariable("id") int idActividad, ModelMap model) {
 			actividad = servicio.getActividadPorId(idActividad);
 			model.addAttribute("categoria", actividad);
-			model.addAttribute("titulo", "Modificar Acctividad");
+			model.addAttribute("titulo", "Modificar Actividad");
 			model.put("modo", "edit");
 			return "actividades/form";
 		}
