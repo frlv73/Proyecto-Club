@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.club.entidades.Instalacion;
 import com.club.entidades.Socio;
@@ -16,15 +17,13 @@ import com.club.servicios.ISocioServicio;
 
 @Controller
 @RequestMapping("/socios")
+@SessionAttributes("usuarioLogueado")
 public class ControladorSocio {
 
 	 @Autowired
 	private ISocioServicio servicio;
-<<<<<<< HEAD
-=======
 	 @Autowired
 	private ICategoriaServicio servCat;
->>>>>>> refs/remotes/origin/ABM_Instalaciones_Socios
 	private Socio socio;
 	 
 	 @RequestMapping(method = RequestMethod.GET)
@@ -48,6 +47,7 @@ public class ControladorSocio {
 		socio = new Socio();
 		model.put("socio", socio);
 		model.put("titulo", "Nuevo Socio");
+		model.put("listaCategorias", servCat.getAllCategorias());
 		model.put("modo", "add");
 		return "socios/formSocio";
 	}
@@ -64,11 +64,8 @@ public class ControladorSocio {
 		socio = servicio.getSocioPorId(idSocio);
 		model.put("socio", socio);
 		model.put("titulo", "Modificar Socio");
-<<<<<<< HEAD
-=======
-		model.put("listaCategorias", servCat.getAllCategorias());
->>>>>>> refs/remotes/origin/ABM_Instalaciones_Socios
 		model.put("modo", "edit");
+		model.put("listaCategorias", servCat.getAllCategorias());
 		return "socios/formSocio";
 	}
 
