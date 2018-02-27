@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<!--/*/ <th:block th:include="fragments/head :: head"></th:block>  /*/-->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('select').material_select();
+	});
+</script>
+</head>
+<body>
+	<!--/*/ <th:block th:insert="fragments/headerAdmin :: header"></th:block>  /*/-->
+	<main>
+	<div class="row">
+		<form class="col s12" method="POST" action="/actividades/guardar" modelAttribute="actividad">
+			<fieldset>
+				<legend>Datos Actividad</legend>
+				<div class="row">
+					<div class="input-field col s6 l1" th:switch="${modo}">
+						<input th:case="edit" th:value="${actividad.id}" name="id"
+							id="id" type="text" readonly> <label th:case="edit" for="id">ID</label>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="input-field col s12 l4">
+						<input th:value="${actividad.descripcion}" id="descripcion" name="descripcion"
+							type="text"> <label for="descripcion">Descripción</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12 l4">
+						<input th:value="${actividad.costo}" id="costo" name="costo"
+							type="text"> <label for="costo">Costo</label>
+					</div>
+				
+					<div class="input-field col s6 l2">
+						<select id="cbxEstado" name="estado">
+							<option value="" disabled selected>Estado</option>
+							<option value="Deshabilitada">Deshabilitada</option>
+							<option value="Habilitada">Habilitada</option>
+						</select> <label for="estado">Estado</label>
+					</div>
+				</div>
+
+				<div class="row">
+					<input type="submit" class="btn waves-effect waves-light black"
+						th:value="${modo == 'edit'} ? 'Actualizar' : 'Agregar'">
+				</div>
+			</fieldset>
+		</form>
+	</div>
+
+	<div class="row">
+		<div class="col s12">
+			<a th:href="@{/}"
+				class="btn-floating btn-small waves-effect waves-light black"><i
+				class="material-icons">arrow_back</i></a>
+		</div>
+	</div>
+	</main>
+
+	<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block>  /*/-->
+
+</body>
+</html>

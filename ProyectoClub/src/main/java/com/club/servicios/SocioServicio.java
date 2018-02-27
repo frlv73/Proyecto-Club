@@ -59,4 +59,9 @@ public class SocioServicio implements ISocioServicio{
 		return dao.getSocioPorId(idSocio);
 	}
 
+	@Override
+	public List<Socio> getAllSociosConReservas() {
+		return dao.getAllSociosConReservas();
+	}
+
 }

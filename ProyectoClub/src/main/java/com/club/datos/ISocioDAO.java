@@ -20,5 +20,7 @@ public interface ISocioDAO {
 
 	public void eliminar(int id);
 
+	List<Socio> getAllSociosConReservas();
+
 
 }

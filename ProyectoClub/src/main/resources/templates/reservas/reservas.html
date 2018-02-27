@@ -39,9 +39,10 @@ $(document).ready(function() {
 
 	<main>
 	<div class="row">
-		<h4>Nueva Reserva</h4>
-		<br />
+	
 		<form action="" method="POST" class="col s12">
+		<fieldset>
+		<legend><h5>Nueva Reserva</h5></legend>
 			<div class="row">
 				<div class="input-field col s12 l2">
 					<select id="cbxInstalacion" name="cbxInstalacion">
@@ -65,10 +66,15 @@ $(document).ready(function() {
 				</div>
 				<div class="input-field col s6 l2">
 					<label for="timepickerfin">Seleccionar Hora Fin</label> <input
-						type="text" class="timepickerfin">
+						type="text" class="timepicker">
 				</div>
 
 			</div>
+			<div class="row">
+					<input type="submit" class="btn waves-effect waves-light black"
+						th:value="${modo == 'edit'} ? 'Actualizar' : 'Agregar'">
+				</div>
+			</fieldset>
 		</form>
 
 	</div>

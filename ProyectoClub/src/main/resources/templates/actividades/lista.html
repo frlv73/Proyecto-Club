@@ -30,12 +30,12 @@
 		</thead>
 		<tbody>
 			<tr th:each="act : ${listaActividades}">
-				<td th:text="${act.id_actividad}"></td>
+				<td th:text="${act.id}"></td>
 				<td th:text="${act.descripcion}"></td>
 				<td th:text="${act.costo}"></td>
 				<td th:text="${act.estado}"></td>
-				<td><a th:href="@{'/actividades/editar/' + ${act.id_actividad}}" class="btn-floating btn-small waves-effect waves-light black"><i class="material-icons">edit</i></a> <a
-					th:href="@{'/actividades/eliminar/' + ${act.id_actividad}}" class="btn-floating btn-small waves-effect waves-light black"><i class="material-icons">delete</i></a></td>
+				<td><a th:href="@{'/actividades/editar/' + ${act.id}}" class="btn-floating btn-small waves-effect waves-light black"><i class="material-icons">edit</i></a> <a
+					th:href="@{'/actividades/eliminar/' + ${act.id}}" class="btn-floating btn-small waves-effect waves-light black"><i class="material-icons">delete</i></a></td>
 
 			</tr>
 		</tbody>

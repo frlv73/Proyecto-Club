@@ -9,5 +9,6 @@ public interface IActividadDAO {
 	public Actividad getActividadPorId(int idActividad);
 	public void actualizar(Actividad act);
 	public void agregar(Actividad act);
+	public List<Actividad> getActidadesConInscriptos();
 
 }

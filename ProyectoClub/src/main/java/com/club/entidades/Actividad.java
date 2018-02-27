@@ -1,14 +1,16 @@
 package com.club.entidades;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Actividad {
 	
-private int id_actividad;
+private int id;
 private String descripcion;
 private String estado;
 private double costo;
 private ArrayList<HorariosActividades> horarios;
+private List<Inscripcion> inscripciones;
 
 
 public ArrayList<HorariosActividades> getHorarios() {
@@ -17,11 +19,11 @@ public ArrayList<HorariosActividades> getHorarios() {
 public void setHorarios(ArrayList<HorariosActividades> horarios) {
 	this.horarios = horarios;
 }
-public int getId_actividad() {
-	return id_actividad;
+public int getId() {
+	return id;
 }
-public void setId_actividad(int id_actividad) {
-	this.id_actividad = id_actividad;
+public void setId(int id_actividad) {
+	this.id = id_actividad;
 }
 public String getDescripcion() {
 	return descripcion;
@@ -43,7 +45,7 @@ public void setCosto(double costo) {
 }
 
 public Actividad(int id, String desc,String est, double costo){
-	this.setId_actividad(id);
+	this.setId(id);
 	this.setDescripcion(desc);
 	this.setEstado(est);
 	this.setCosto(costo);                                                                                                               
@@ -54,7 +56,13 @@ public Actividad(){}
 
 public Actividad(int id_actividad) {
 	super();
-	this.id_actividad = id_actividad;
+	this.id = id_actividad;
+}
+public List<Inscripcion> getInscripciones() {
+	return inscripciones;
+}
+public void setInscripciones(List<Inscripcion> inscripciones) {
+	this.inscripciones = inscripciones;
 }
 
 

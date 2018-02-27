@@ -30,5 +30,11 @@ public class ControladorHome {
 		model.put("titulo", "Nuevo Socio");
 		return "socios/nuevoSocio";
 	}
+	
+	@RequestMapping(value="/reportes", method=RequestMethod.GET)
+	public String reportes(ModelMap model) {
+		model.put("titulo", "Reportes");
+		return "reporte";
+	}
 
 }

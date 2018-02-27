@@ -21,6 +21,9 @@ public class ControladorReserva {
 
 	@Autowired
 	IInstalacionServicio instalacionServicio;
+	
+	//@Autowired
+	//IReservaServicio reservaServicio;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String index(HttpServletRequest request, ModelMap model) {

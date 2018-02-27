@@ -66,6 +66,7 @@ public class ControladorSocio {
 		model.put("titulo", "Modificar Socio");
 		model.put("modo", "edit");
 		model.put("listaCategorias", servCat.getAllCategorias());
+		model.put("modo", "edit");
 		return "socios/formSocio";
 	}
 
