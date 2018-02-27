@@ -21,6 +21,8 @@ public interface ISocioServicio {
 
 	public void eliminar(int id);
 
+	public List<Socio> getAllSociosConReservas();
+
 	
 
 }

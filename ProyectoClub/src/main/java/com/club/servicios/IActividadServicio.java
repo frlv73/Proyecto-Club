@@ -16,4 +16,6 @@ public interface IActividadServicio {
 
 	public void eliminar(int id);
 
+	public List<Actividad> getActividadesConInscriptos();
+
 }

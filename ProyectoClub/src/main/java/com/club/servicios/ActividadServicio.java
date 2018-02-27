@@ -44,4 +44,9 @@ public class ActividadServicio implements IActividadServicio{
 		
 	}
 
+	@Override
+	public List<Actividad> getActividadesConInscriptos() {
+		return dao.getActidadesConInscriptos();
+	}
+
 }

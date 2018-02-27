@@ -1,5 +1,7 @@
 package com.club.entidades;
 
+import java.util.List;
+
 public class Socio {
 
 	private int id;
@@ -14,6 +16,7 @@ public class Socio {
 	private String password;
 	private String estado;
 	private CategoriaSocio categoriaSocio;
+	private List<Reserva> reservasRealizadas;
 
 	
 	//Contructor para Login
@@ -31,6 +34,13 @@ public class Socio {
 		super();
 		this.setId(idSocio);
 	}
+	public Socio(int id, String nombre, String apellido) {
+		super();
+		this.setId(id);
+		this.setNombre(nombre);
+		this.setApellido(apellido);
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -125,6 +135,14 @@ public class Socio {
 
 	public void setLocalidad(String localidad) {
 		this.localidad = localidad;
+	}
+
+	public List<Reserva> getReservasRealizadas() {
+		return reservasRealizadas;
+	}
+
+	public void setReservasRealizadas(List<Reserva> reservasRealizadas) {
+		this.reservasRealizadas = reservasRealizadas;
 	}
 
 }

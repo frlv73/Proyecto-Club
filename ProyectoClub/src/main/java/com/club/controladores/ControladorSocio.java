@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.club.entidades.Instalacion;
 import com.club.entidades.Socio;
@@ -16,6 +17,7 @@ import com.club.servicios.ISocioServicio;
 
 @Controller
 @RequestMapping("/socios")
+@SessionAttributes("usuarioLogueado")
 public class ControladorSocio {
 
 	 @Autowired
