@@ -12,7 +12,7 @@ import com.club.entidades.Socio;
 import com.club.servicios.ILoginServicio;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/login")
 @SessionAttributes("usuarioLogueado") // Atributo de sesión del usuario
 public class ControladorLogin {
 
