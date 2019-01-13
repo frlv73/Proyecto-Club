@@ -28,13 +28,13 @@ public class ActividadDAO implements IActividadDAO{
 	
 
 	// Definición de consultas a la BD
-	private static String SQL_BUSCAR_TODAS = "SELECT * FROM actividades";
+	private static String SQL_BUSCAR_TODAS = "SELECT * FROM actividades where fecha_baja is null or estado='Activa'";
 	private static String SQL_BUSCAR_POR_ID = "SELECT * FROM actividades WHERE id_actividad = :id";
-	//private static String SQL_INSERTAR = "INSERT INTO actividades (descripción, costo) VALUES (:descripción, :costo)";
-	private static String SQL_INSERTAR = "INSERT INTO actividades (descripcion, costo) VALUES (:descripcion, :costo)";
-	private static String SQL_ACTUALIZAR = "UPDATE actividades SET descripcion = :descripcion, costo = :costo, estado = :estado WHERE id_actividad = :id";
+	private static String SQL_INSERTAR = "INSERT INTO actividades (descripcion, estado, costo) VALUES (:descripcion,'Activa', :costo)";
+	private static String SQL_ACTUALIZAR = "UPDATE actividades SET descripcion = :descripcion, costo = :costo WHERE id_actividad = :id";
 	private static String SQL_BUSCAR_TODAS_ACTIVIDADES_CON_INSCRIPTOS = "SELECT act.id_actividad, act.descripcion, soc.id_socio, soc.nombre, soc.apellido, ins.id_inscripcion FROM actividades act INNER JOIN inscripciones ins on act.id_actividad = ins.id_actividad\r\n" + 
 			"INNER JOIN socios soc on ins.id_socio = soc.id_socio;";
+	private static String SQL_ELIMINAR="update actividades set fecha_baja=current_date(),estado='Inactiva' where id_actividad=:id";
 	
 	NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
@@ -72,6 +72,12 @@ public class ActividadDAO implements IActividadDAO{
 	}
 	
 	@Override
+	public void eliminar(int id) {
+		namedParameterJdbcTemplate.update(SQL_ELIMINAR, getSqlParameterByModel(getActividadPorId(id)));
+		
+	}
+	
+	@Override
 	public List<Actividad> getActidadesConInscriptos() {
 		return namedParameterJdbcTemplate.query(SQL_BUSCAR_TODAS_ACTIVIDADES_CON_INSCRIPTOS, getSqlParameterByModel(null), new ActividadExtractor());
 	}
@@ -81,7 +87,6 @@ public class ActividadDAO implements IActividadDAO{
 		MapSqlParameterSource paramSource = new MapSqlParameterSource();
 		if (actividad != null) {
 			paramSource.addValue("id", actividad.getId());
-			//paramSource.addValue("descripción", actividad.getDescripcion());
 			paramSource.addValue("descripcion", actividad.getDescripcion());
 			paramSource.addValue("costo", actividad.getCosto());
 			paramSource.addValue("estado", actividad.getEstado());
@@ -96,7 +101,6 @@ public class ActividadDAO implements IActividadDAO{
 		public Actividad mapRow(ResultSet rs, int numFilas) throws SQLException {
 			Actividad act = new Actividad();
 			act.setId(rs.getInt("id_actividad"));
-			//act.setDescripcion(rs.getString("descripción"));
 			act.setDescripcion(rs.getString("descripcion"));
 			act.setCosto(rs.getDouble("costo"));
 			act.setEstado(rs.getString("estado"));
@@ -132,7 +136,7 @@ public class ActividadDAO implements IActividadDAO{
 				Inscripcion ins = new Inscripcion();
 				ins.setId(rs.getInt("id_inscripcion"));
 				ins.setActividad(new Actividad(actividad.getId()));
-				ins.setSocio(new Socio(rs.getInt("id_socio"), rs.getString("nombre"), rs.getString("apellido")));
+				//ins.setSocio(new Socio(rs.getInt("id_socio"), rs.getString("nombre"), rs.getString("apellido"),rs.getString("dni")));
 				listaInscripciones.add(ins);
 				
 			}

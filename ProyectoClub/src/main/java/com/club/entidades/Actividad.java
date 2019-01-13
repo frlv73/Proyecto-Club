@@ -1,5 +1,6 @@
 package com.club.entidades;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,8 +12,15 @@ private String estado;
 private double costo;
 private ArrayList<HorariosActividades> horarios;
 private List<Inscripcion> inscripciones;
+private Date fecha_baja;
 
+public Date getFechaBaja() {
+	return fecha_baja;
+}
 
+public void setFechaBaja(Date fecha) {
+	this.fecha_baja=fecha;
+}
 public ArrayList<HorariosActividades> getHorarios() {
 	return horarios;
 }

@@ -21,7 +21,7 @@ public class ControladorCategoria {
 	@Autowired
 	private ICategoriaServicio servicio;
 	
-	private CategoriaSocio categoria;
+	private CategoriaSocio categ;
 	
 	//Lista de categorías
 	@RequestMapping(method= RequestMethod.GET)
@@ -35,8 +35,8 @@ public class ControladorCategoria {
 	//Nueva categoría
 	@RequestMapping(value = "/agregar", method = RequestMethod.GET)
 	public String agregar(ModelMap model) {
-		categoria= new CategoriaSocio();
-		model.addAttribute("categoria", categoria);
+		categ= new CategoriaSocio();
+		model.addAttribute("categoria", categ);
 		model.put("titulo", "Nueva Categoría");
 		model.put("modo", "add");
 		return "categorias/form";
@@ -45,31 +45,31 @@ public class ControladorCategoria {
 	//Editar Categoria
 	@RequestMapping(value = "/editar/{id}", method = RequestMethod.GET)
 	public String editar(@PathVariable("id") int idCategoria, ModelMap model) {
-		categoria = servicio.getCategoriaPorId(idCategoria);
-		model.addAttribute("categoria", categoria);
-		model.addAttribute("titulo", "Modificar Instalación");
+		categ = servicio.getCategoriaPorId(idCategoria);
+		model.addAttribute("categoria", categ);
+		model.addAttribute("titulo", "Modificar Categoria");
 		model.put("modo", "edit");
 		return "categorias/form";
 	}
 	
 	// Procesa el form de agregar y editar. Revisar que funcione el ModelAttribute
 	@RequestMapping(value = "/guardar", method = RequestMethod.POST)
-	public String guardar(@RequestParam(value = "id", required = false) Integer id,
-			@RequestParam("descripcion") String desc, ModelMap model) {
+	public String guardar(@RequestParam(value = "id", required = false) Integer idCategoria,
+			@RequestParam("descripcion") String desc,@RequestParam("estado") String est, ModelMap model) {
 		
 		// Si estamos agregando, no enviamos el id porque se autogenera en la BD. Por lo
 		// tanto, lo inicializamos con 0, un valor que ninguna categoría de la BD
 		// tendrá.
-		if (null == id) {
-			id = 0;
+		if (null == idCategoria) {
+			idCategoria = 0;
 		}
 		
-		categoria = new CategoriaSocio(id, desc);
+		categ = new CategoriaSocio(idCategoria, desc, est);
 		
-		if (0 != categoria.getId()) {
-			servicio.actualizar(categoria);
+		if (0 != categ.getId()) {
+			servicio.actualizar(categ);
 		} else {
-			servicio.agregar(categoria);
+			servicio.agregar(categ);
 		}
 
 		return "redirect:/categorias";
@@ -80,7 +80,7 @@ public class ControladorCategoria {
 	public String eliminar(@PathVariable("id") int id) {
 
 		servicio.eliminar(id);
-		return "categorias/lista";
+		return "redirect:/categorias";
 	}
 
 }

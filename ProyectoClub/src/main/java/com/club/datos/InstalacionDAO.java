@@ -18,15 +18,12 @@ import com.club.entidades.Instalacion;
 public class InstalacionDAO implements IInstalacionDAO {
 
 	// Definición de consultas a la BD
-	private static String SQL_BUSCAR_TODAS = "SELECT * FROM instalaciones";
+	private static String SQL_BUSCAR_TODAS = "SELECT * FROM instalaciones where fecha_baja is null or estado='Habilitada'";
 	private static String SQL_BUSCAR_POR_ID = "SELECT * FROM instalaciones WHERE id_instalaciones = :id";
 	private static String SQL_INSERTAR = "INSERT INTO instalaciones (descripcion,estado) VALUES (:descripcion, :estado)";
 	private static String SQL_ACTUALIZAR = "UPDATE instalaciones SET descripcion = :descripcion, estado = :estado WHERE id_instalaciones = :id";
-
-	/*
-	 * set fecha_baja today() private static String SQL_ELIMINAR =
-	 * "DELETE FROM instalaciones HERE id_instalacion = :id";
-	 */
+	private static String SQL_ELIMINAR="update instalaciones set fecha_baja=current_date(),estado='Deshabilitada' where id_instalaciones=:id";
+	
 	NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
 	@Autowired
@@ -64,7 +61,9 @@ public class InstalacionDAO implements IInstalacionDAO {
 
 	@Override
 	public void eliminar(int id) {
-		// TODO Auto-generated method stub
+		namedParameterJdbcTemplate.update(SQL_ELIMINAR, getSqlParameterByModel(getInstalacionPorId(id)));
+
+
 
 	}
 

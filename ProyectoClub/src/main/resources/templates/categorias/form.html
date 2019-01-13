@@ -17,14 +17,22 @@
 				<legend>Datos Categoría de Socio</legend>
 				<div class="row">
 					<div class="input-field col s6 l1" th:switch="${modo}">
-						<input th:case="edit" th:value="${categoria.id}"
-							id="id" name="id" type="text" disabled> <label th:case="edit" for="txtId">ID</label>
+						<input th:case="edit" th:value="${categoria.id}" name="id"
+						id="id" type="text" readonly> <label th:case="edit" for="id">ID</label>
+					
 					</div>
 				</div>
 				<div class="row">
 					<div class="input-field col s12 l4">
 						<input th:value="${categoria.descripcion}" id="descripcion" name="descripcion"
 							type="text"> <label for="descripcion">Descripción</label>
+					</div>
+					<div class="input-field col s6 l2">
+						<select id="cbxEstado" name="estado">
+							<option value="" disabled selected>Estado</option>
+							<option value="Deshabilitada">Deshabilitada</option>
+							<option value="Habilitada">Habilitada</option>
+						</select> <label for="estado">Estado</label>
 					</div>
 
 				</div>

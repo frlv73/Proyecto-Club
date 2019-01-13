@@ -18,10 +18,11 @@ import com.club.entidades.CategoriaSocio;
 public class CategoriaSocioDAO implements ICategoriaSocioDAO {
 
 	// Definición de consultas a la BD
-	private static String SQL_BUSCAR_TODAS = "SELECT * FROM categorias";
-	private static String SQL_BUSCAR_POR_ID = "SELECT * FROM categorias WHERE id_categoria = :id";
-	private static String SQL_INSERTAR = "INSERT INTO categorias (descripcion) VALUES (:descripcion)";
-	private static String SQL_ACTUALIZAR = "UPDATE categorias SET descripcion = :descripcion WHERE id_categoria = :id";
+	private static String SQL_BUSCAR_TODAS = "SELECT * FROM categorias where fecha_baja is null or estado='Habilitada'";
+	private static String SQL_BUSCAR_POR_ID = "SELECT * FROM categorias WHERE id_categoria = :id_categoria";
+	private static String SQL_INSERTAR = "INSERT INTO categorias (descripcion,estado) VALUES (:descripcion,'Habilitada')";
+	private static String SQL_ACTUALIZAR = "UPDATE categorias SET descripcion = :descripcion, estado=:estado WHERE id_categoria = :id_categoria";
+	private static String SQL_ELIMINAR="update categorias set fecha_baja=current_date(), estado='Deshabilitada' where id_categoria= :id_categoria";
 
 	NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
@@ -41,7 +42,8 @@ public class CategoriaSocioDAO implements ICategoriaSocioDAO {
 
 	@Override
 	public CategoriaSocio getCategoriaPorId(int idCategoria) {
-		CategoriaSocio categoria = namedParameterJdbcTemplate.queryForObject(SQL_BUSCAR_POR_ID, getSqlParameterByModel(new CategoriaSocio(idCategoria)), new CategoriaMapper());
+		CategoriaSocio categoria = namedParameterJdbcTemplate.queryForObject(SQL_BUSCAR_POR_ID,
+				getSqlParameterByModel(new CategoriaSocio(idCategoria)), new CategoriaMapper());
 		return categoria;
 
 	}
@@ -52,7 +54,7 @@ public class CategoriaSocioDAO implements ICategoriaSocioDAO {
 		namedParameterJdbcTemplate.update(SQL_ACTUALIZAR, getSqlParameterByModel(cat));
 		
 	}
-	
+
 	@Override
 	public void agregar(CategoriaSocio cat) {
 		namedParameterJdbcTemplate.update(SQL_INSERTAR, getSqlParameterByModel(cat));
@@ -61,7 +63,8 @@ public class CategoriaSocioDAO implements ICategoriaSocioDAO {
 	
 	@Override
 	public void eliminar(int id) {
-		// TODO Auto-generated method stub
+		namedParameterJdbcTemplate.update(SQL_ELIMINAR, getSqlParameterByModel(getCategoriaPorId(id)));
+		
 		
 	}
 	
@@ -70,8 +73,9 @@ public class CategoriaSocioDAO implements ICategoriaSocioDAO {
 	private SqlParameterSource getSqlParameterByModel(CategoriaSocio categoriaSocio) {
 		MapSqlParameterSource paramSource = new MapSqlParameterSource();
 		if (categoriaSocio != null) {
-			paramSource.addValue("id", categoriaSocio.getId());
+			paramSource.addValue("id_categoria", categoriaSocio.getId());
 			paramSource.addValue("descripcion", categoriaSocio.getDescripcion());
+			paramSource.addValue("estado", categoriaSocio.getEstado());
 			
 		}
 		return paramSource;
@@ -84,6 +88,7 @@ public class CategoriaSocioDAO implements ICategoriaSocioDAO {
 			CategoriaSocio cat = new CategoriaSocio();
 			cat.setId(rs.getInt("id_categoria"));
 			cat.setDescripcion(rs.getString("descripcion"));
+			cat.setEstado(rs.getString("estado"));
 			
 			return cat;
 		}

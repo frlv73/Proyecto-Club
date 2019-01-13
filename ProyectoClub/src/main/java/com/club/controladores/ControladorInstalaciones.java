@@ -91,7 +91,7 @@ public class ControladorInstalaciones {
 	public String eliminar(@PathVariable("id") int id) {
 
 		servicio.eliminar(id);
-		return "instalaciones/lista";
+		return "redirect:/instalaciones";
 	}
 
 }

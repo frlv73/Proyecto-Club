@@ -40,7 +40,7 @@ public class ActividadServicio implements IActividadServicio{
 
 	@Override
 	public void eliminar(int id) {
-		// TODO Auto-generated method stub
+		dao.eliminar(id);
 		
 	}
 

@@ -28,13 +28,14 @@ public class SocioDAO implements ISocioDAO {
 	private static String SQL_BUSCAR_POR_ID = "SELECT * FROM Socios WHERE id_socio = :id";
 	private static String SQL_LOGIN = "SELECT * FROM socios WHERE mail= :email AND password= :password";
 	private static String SQL_INSERTAR = "INSERT INTO socios (dni, nombre, apellido, localidad, direccion, telefono, "
-			+ "mail, password, estado, id_categoria_socio) VALUES (:dni, :nombre, :apellido, :localidad, :direccion,"
-			+ ":telefono, :email, :password, :estado, :id_categoria)";
+			+ "mail, password, id_categoria_socio, estado) VALUES (:dni, :nombre, :apellido, :localidad, :direccion,"
+			+ ":telefono, :email, :password, :id_categoria, 'Habilitado')";
 	private static String SQL_ACTUALIZAR = "UPDATE socios SET dni = :dni, nombre = :nombre, apellido = :apellido, direccion = :direccion, localidad = :localidad, "
-			+ "	telefono = :telefono, estado = :estado," + ", id_categoria_socio = :id_cat_soc WHERE id_socio = :id";
+			+ "	telefono = :telefono" + ", id_categoria_socio = :id_cat_soc WHERE id_socio = :id";
 	private static String SQL_BUSCAR_SOCIOS_CON_RESERVAS = "SELECT soc.id_socio, soc.nombre, soc.apellido, res.id_reserva, ins.id_instalaciones, ins.descripcion\r\n"
 			+ "FROM socios soc INNER JOIN reservas res ON soc.id_socio = res.id_socio\r\n"
 			+ "INNER JOIN instalaciones ins ON res.id_instalacion = ins.id_instalaciones";
+	private static String SQL_ELIMINAR="update socios set fecha_baja=current_date(), estado='Inactivo' where id_socio=:id";
 
 	NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
@@ -74,13 +75,14 @@ public class SocioDAO implements ISocioDAO {
 
 	@Override
 	public void agregar(Socio soc) {
-		// TODO Auto-generated method stub
+		namedParameterJdbcTemplate.update(SQL_INSERTAR, getSqlParameterByModel(soc));
+
 
 	}
 
 	@Override
 	public void eliminar(int id) {
-		// TODO Auto-generated method stub
+		namedParameterJdbcTemplate.update(SQL_ELIMINAR, getSqlParameterByModel(getSocioPorId(id)));
 
 	}
 
@@ -153,14 +155,14 @@ public class SocioDAO implements ISocioDAO {
 					socio = new Socio();
 					socio.setCategoriaSocio(new CategoriaSocio());
 					socio.setId(rs.getInt("id_socio"));
-					//socio.setDni(rs.getString("dni"));
+					socio.setDni(rs.getString("dni"));
 					socio.setNombre(rs.getString("nombre"));
 					socio.setApellido(rs.getString("apellido"));
-					//socio.setEmail(rs.getString("mail"));
-					//socio.setDireccion(rs.getString("direccion"));
-					//socio.setLocalidad(rs.getString("localidad"));
-					//socio.setTelefono(rs.getString("telefono"));
-					//socio.setEstado(rs.getString("estado"));
+					socio.setEmail(rs.getString("mail"));
+					socio.setDireccion(rs.getString("direccion"));
+					socio.setLocalidad(rs.getString("localidad"));
+					socio.setTelefono(rs.getString("telefono"));
+					socio.setEstado(rs.getString("estado"));
 					//socio.getCategoriaSocio().setId(rs.getInt("id_categoria_socio"));
 					map.put(id, socio);
 				}

@@ -9,8 +9,8 @@
 
 	<main>
 	<div class="row">
-		<form class="col s12" method="POST" action="/agregar"
-			modelAttribute="formSocio">
+		<form class="col s12" method="POST" action="/socios/guardar"
+			modelAttribute="socio">
 			<fieldset>
 				<legend>Datos Socio</legend>
 				<div class="row">
@@ -56,7 +56,7 @@
 						<select id="cbxCategorias" name="cbxCategorias">
 							<option value="" disabled selected>Categoria</option>
 							<option th:each="cat : ${listaCategorias}" th:value="${cat.id}"
-								th:text="${cat.descripcion}" />
+								th:text="${cat.descripcion}" name="id_categoria_socio" />
 						</select> <label>Seleccionar Categoria</label>
 					</div>
 				</div>
@@ -69,51 +69,18 @@
 
 						<input th:value="${socio.password}" type="password"
 							id="txtPassword" name="password"> <label for="txtPassword">Contraseña</label>
-
-						<input  th:value="${socio.apellido}" type="text" id="txtApellido" name="apellido"> <label for="txtApellido">Apellido</label>
-					</div>
+</div>
 
 				</div>
-				<div class="row">
-					<div class="input-field col s12 l4">
-						<input th:value="${socio.localidad}" type="text" id="txtLocalidad" name="localidad"> <label
-							for="txtLocalidad">Localidad</label>
-					</div>
-					<div class="input-field col s12 l4">
-						<input th:value="${socio.direccion}" type="text" id="txtDireccion" name="direccion"> <label
-							for="txtDireccion">Dirección</label>
-					</div>
-				</div>
-				<div class="row">
-					<div class="input-field col s12 l4">
-						<input th:value="${socio.telefono}" type="text" id="txtTelefono" name="telefono"> <label
-							for="txtTelefono">Teléfono</label>
-					</div>
-					<div class="input-field col s12 l4">
-					<select id="cbxCategorias" name="cbxCategorias" data-beloworigin="true">
-						<option value="" disabled selected>Categoria</option>
+				
 						
-						<option th:each="cat : ${listaCategorias}" th:value="${cat.id}"
-							th:text="${cat.descripcion}" />
+				
 
-					</select> <label>Seleccionar Categoria</label>
-				</div>
-				</div>
-				<div class="row">
-					<div class="input-field col s12 l4">
-						<input th:value="${socio.email}" type="text" id="txtEmail" name="email"> <label for="txtEmail">Email</label>
-					</div>
-					<div class="input-field col s12 l4">
-						<input th:value="${socio.password}" type="password" id="txtPassword" name="password"> <label
->>>>>>> branch 'master' of https://github.com/frlv73/Proyecto-Club.git
-							for="txtPassword">Contraseña</label>
-					</div>
-
-				</div>
+		
 
 				<div class="input-field col l4 hide-on-med-and-down">
 					<input type="submit" class="btn waves-effect waves-light black"
-						value="Guardar">
+						th:value="${modo == 'edit'} ? 'Actualizar' : 'Agregar'">
 				</div>
 
 			</fieldset>

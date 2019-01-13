@@ -80,7 +80,7 @@ public class ControladorActividades {
 	public String eliminar(@PathVariable("id") int id) {
 
 		servicio.eliminar(id);
-		return "actividades/lista";
+		return "redirect:/actividades";
 	}
 
 }

@@ -23,6 +23,7 @@
 					<tr>
 						<th>ID</th>
 						<th>Descripción</th>
+						<th>Estado</th>
 						<th>Acciones</th>
 					</tr>
 				</thead>
@@ -30,6 +31,7 @@
 					<tr th:each="cat : ${listaCategorias}">
 						<td th:text="${cat.id}"></td>
 						<td th:text="${cat.descripcion}"></td>
+						<td th:text="${cat.estado}"></td>
 						<td><a th:href="@{'/categorias/editar/' + ${cat.id}}"
 							class="btn-floating btn-small waves-effect waves-light black"><i
 								class="material-icons">edit</i></a> <a

@@ -23,6 +23,7 @@
 			<tr>
 				<th>ID</th>
 				<th>Descripción</th>
+				<th>Estado</th>
 				<th>Acciones</th>
 			</tr>
 		</thead>
@@ -30,6 +31,7 @@
 			<tr th:each="ins : ${listaInstalaciones}">
 				<td th:text="${ins.id}"></td>
 				<td th:text="${ins.descripcion}"></td>
+				<td th:text="${ins.estado}"></td>
 				<td><a th:href="@{'/instalaciones/editar/' + ${ins.id}}" class="btn-floating btn-small waves-effect waves-light black"><i class="material-icons">edit</i></a> <a
 					th:href="@{'/instalaciones/eliminar/' + ${ins.id}}" class="btn-floating btn-small waves-effect waves-light black"><i class="material-icons">delete</i></a></td>
 

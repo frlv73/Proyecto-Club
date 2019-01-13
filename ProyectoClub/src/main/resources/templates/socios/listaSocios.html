@@ -25,6 +25,7 @@
 				<th>DNI</th>
 				<th>Nombre</th>
 				<th>Apellido</th>
+				<th>Estado</th>
 				<th>Acciones</th>
 			</tr>
 		</thead>
@@ -34,6 +35,7 @@
 				<td th:text="${soc.dni}"></td>
 				<td th:text="${soc.nombre}"></td>
 				<td th:text="${soc.apellido}"></td>
+				<td th:text="${soc.estado}"></td>
 				<td><a th:href="@{'/socios/editar/' + ${soc.id}}" class="btn-floating btn-small waves-effect waves-light black"><i class="material-icons">edit</i></a> <a
 					th:href="@{'/socios/eliminar/' + ${soc.id}}" class="btn-floating btn-small waves-effect waves-light black"><i class="material-icons">delete</i></a></td>
 				

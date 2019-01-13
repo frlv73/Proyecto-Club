@@ -1,5 +1,6 @@
 package com.club.entidades;
 
+import java.sql.Date;
 import java.util.List;
 
 public class Socio {
@@ -15,8 +16,10 @@ public class Socio {
 	private String usuario;
 	private String password;
 	private String estado;
+	private Date fecha_baja;
 	private CategoriaSocio categoriaSocio;
 	private List<Reserva> reservasRealizadas;
+	private int id_cat_soc;
 
 	
 	//Contructor para Login
@@ -34,13 +37,27 @@ public class Socio {
 		super();
 		this.setId(idSocio);
 	}
-	public Socio(int id, String nombre, String apellido) {
+	public Socio(int id,String d, String nombre, String apellido, String loc, String dir, String tel, int cat, String m, String contras) {
 		super();
 		this.setId(id);
 		this.setNombre(nombre);
 		this.setApellido(apellido);
+		this.setDni(d);
+		this.setLocalidad(loc);
+		this.setDireccion(dir);
+		this.setTelefono(tel);
+		this.setIdCat(cat);
+		this.setEmail(m);
+		this.setPassword(contras);
 	}
 
+	public int getIdCat() {
+		return id_cat_soc;
+	}
+	
+	public void setIdCat(int id) {
+		this.id_cat_soc=id;
+	}
 	public int getId() {
 		return id;
 	}
@@ -135,6 +152,14 @@ public class Socio {
 
 	public void setLocalidad(String localidad) {
 		this.localidad = localidad;
+	}
+	
+	public Date getFechaBaja() {
+		return fecha_baja;
+	}
+	
+	public void setFechaBaja(Date fecha) {
+		this.fecha_baja=fecha;
 	}
 
 	public List<Reserva> getReservasRealizadas() {
