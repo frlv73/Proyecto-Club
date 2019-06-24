@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.club.entidades.Actividad;
 
-public interface IActividadServicio {
+public interface IServicioActividad {
 	
 	public List<Actividad> getAllActividades();
 

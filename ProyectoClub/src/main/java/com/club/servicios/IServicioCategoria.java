@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.club.entidades.CategoriaSocio;
 
-public interface ICategoriaServicio {
+public interface IServicioCategoria {
 	public List<CategoriaSocio> getAllCategorias();
 
 	public CategoriaSocio getCategoriaPorId(int idCategoria);

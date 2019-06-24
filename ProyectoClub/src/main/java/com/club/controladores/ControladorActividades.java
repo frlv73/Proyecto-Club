@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.club.entidades.Actividad;
-import com.club.servicios.IActividadServicio;
+import com.club.servicios.IServicioActividad;
 
 @Controller
 @RequestMapping("/actividades")
@@ -18,7 +18,7 @@ import com.club.servicios.IActividadServicio;
 public class ControladorActividades {
 
 	@Autowired
-	private IActividadServicio servicio;
+	private IServicioActividad servicio;
 
 	private Actividad actividad;
 

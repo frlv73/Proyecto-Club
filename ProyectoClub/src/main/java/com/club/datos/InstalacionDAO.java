@@ -42,9 +42,14 @@ public class InstalacionDAO implements IInstalacionDAO {
 
 	@Override
 	public Instalacion getInstalacionPorId(int idInstalacion) {
-		Instalacion instalacion = namedParameterJdbcTemplate.queryForObject(SQL_BUSCAR_POR_ID,
-				getSqlParameterByModel(new Instalacion(idInstalacion)), new InstalacionMapper());
-		return instalacion;
+		try {
+			Instalacion instalacion = namedParameterJdbcTemplate.queryForObject(SQL_BUSCAR_POR_ID,
+					getSqlParameterByModel(new Instalacion(idInstalacion)), new InstalacionMapper());
+			return instalacion;
+		} catch (Exception e) {
+			return null;
+		}
+		
 	}
 
 	@Override

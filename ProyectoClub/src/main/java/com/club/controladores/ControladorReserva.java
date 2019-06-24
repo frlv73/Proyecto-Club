@@ -8,7 +8,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import com.club.entidades.Socio;
-import com.club.servicios.IInstalacionServicio;
+import com.club.servicios.IServicioInstalacion;
 import com.club.servicios.ISocioServicio;
 
 @Controller
@@ -20,7 +20,7 @@ public class ControladorReserva {
 	ISocioServicio socioServicio;
 
 	@Autowired
-	IInstalacionServicio instalacionServicio;
+	IServicioInstalacion instalacionServicio;
 	
 	//@Autowired
 	//IReservaServicio reservaServicio;

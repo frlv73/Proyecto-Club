@@ -1,17 +1,12 @@
 package com.club.controladores;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.club.entidades.Socio;
-import com.club.servicios.IActividadServicio;
+import com.club.servicios.IServicioActividad;
 import com.club.servicios.ISocioServicio;
 
 @Controller
@@ -22,7 +17,7 @@ public class ControladorReportes {
 	ISocioServicio socioServicio;
 	
 	@Autowired
-	IActividadServicio actividadServicio;
+	IServicioActividad actividadServicio;
 
 	@RequestMapping(value="/reservasPorSocio", method = RequestMethod.GET)
 	public String sociosConMasReservas(ModelMap model) {

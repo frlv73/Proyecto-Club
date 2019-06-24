@@ -28,7 +28,7 @@ public class ControladorHome {
 	@RequestMapping(value="/registro", method= RequestMethod.GET)
 	public String agregarSocio(ModelMap model) {
 		model.put("titulo", "Nuevo Socio");
-		return "socios/nuevoSocio";
+		return "socios/formSocio";
 	}
 	
 	@RequestMapping(value="/reportes", method=RequestMethod.GET)

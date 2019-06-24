@@ -75,7 +75,13 @@ public class SocioDAO implements ISocioDAO {
 
 	@Override
 	public void agregar(Socio soc) {
-		namedParameterJdbcTemplate.update(SQL_INSERTAR, getSqlParameterByModel(soc));
+		try {
+			namedParameterJdbcTemplate.update(SQL_INSERTAR, getSqlParameterByModel(soc));
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 
 
 	}
@@ -88,9 +94,14 @@ public class SocioDAO implements ISocioDAO {
 
 	@Override
 	public Socio getSocioPorId(int idSocio) {
-		Socio socio = namedParameterJdbcTemplate.queryForObject(SQL_BUSCAR_POR_ID,
-				getSqlParameterByModel(new Socio(idSocio)), new SocioMapper());
-		return socio;
+		try {
+			Socio socio = namedParameterJdbcTemplate.queryForObject(SQL_BUSCAR_POR_ID,
+					getSqlParameterByModel(new Socio(idSocio)), new SocioMapper());
+			return socio;
+		} catch (Exception e) {
+			return null;
+		}
+		
 	}
 
 	@Override

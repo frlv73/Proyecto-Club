@@ -1,11 +1,10 @@
 package com.club.controladores;
 
-import static org.mockito.Matchers.isNull;
+//import org.mockito.Matchers.isNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.club.entidades.Instalacion;
-import com.club.servicios.IInstalacionServicio;
+import com.club.servicios.IServicioInstalacion;
 
 @Controller
 @RequestMapping("/instalaciones")
@@ -21,7 +20,7 @@ import com.club.servicios.IInstalacionServicio;
 public class ControladorInstalaciones {
 
 	@Autowired
-	private IInstalacionServicio servicio;
+	private IServicioInstalacion servicio;
 
 	private Instalacion instalacion;
 

@@ -9,7 +9,7 @@ import com.club.datos.IActividadDAO;
 import com.club.entidades.Actividad;
 
 @Service
-public class ActividadServicio implements IActividadServicio{
+public class ServicioActividad implements IServicioActividad{
 	
 	@Autowired
 	private IActividadDAO dao;

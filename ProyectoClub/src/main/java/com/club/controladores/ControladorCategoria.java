@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.club.entidades.CategoriaSocio;
-import com.club.servicios.ICategoriaServicio;
+import com.club.servicios.IServicioCategoria;
 
 @Controller
 @RequestMapping("/categorias" )
@@ -19,7 +19,7 @@ import com.club.servicios.ICategoriaServicio;
 public class ControladorCategoria {
 	
 	@Autowired
-	private ICategoriaServicio servicio;
+	private IServicioCategoria servicio;
 	
 	private CategoriaSocio categ;
 	

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.club.entidades.CategoriaSocio;
 import com.club.entidades.Instalacion;
 import com.club.entidades.Socio;
-import com.club.servicios.ICategoriaServicio;
+import com.club.servicios.IServicioCategoria;
 import com.club.servicios.ISocioServicio;
 
 @Controller
@@ -25,7 +25,7 @@ public class ControladorSocio {
 	 @Autowired
 	private ISocioServicio servicio;
 	 @Autowired
-	private ICategoriaServicio servCat;
+	private IServicioCategoria servCat;
 	private Socio socio;
 	 
 	 @RequestMapping(method = RequestMethod.GET)

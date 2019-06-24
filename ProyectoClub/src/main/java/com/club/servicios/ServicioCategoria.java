@@ -9,7 +9,7 @@ import com.club.datos.ICategoriaSocioDAO;
 import com.club.entidades.CategoriaSocio;
 
 @Service
-public class CategoriaServicio implements ICategoriaServicio{
+public class ServicioCategoria implements IServicioCategoria{
 	
 	@Autowired
 	private ICategoriaSocioDAO dao;
